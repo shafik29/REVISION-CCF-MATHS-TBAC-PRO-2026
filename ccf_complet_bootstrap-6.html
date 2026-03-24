@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Préparer le CCF – Terminale Bac Pro Maths</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}],throwOnError:false})"></script>
+
+<!-- MathQuill — saisie mathématique -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.js"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f1f3f6;
+    font-size: 15px;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    background: #fff;
+    border-bottom: 1px solid #e2e5eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .6rem 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand-logo {
+    width: 32px; height: 32px;
+    background: #111827;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: .85rem;
+    flex-shrink: 0;
+  }
+  .brand-text .title { font-weight: 700; font-size: .95rem; letter-spacing: -.02em; }
+  .brand-text .sub   { font-size: .7rem; color: #9ca3af; }
+
+  /* ── TAB NAV ── */
+  .ex-tabs {
+    background: #fff;
+    border-bottom: 2px solid #e2e5eb;
+  }
+  .ex-tabs .nav-link {
+    font-weight: 600;
+    font-size: .85rem;
+    color: #6b7280;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    padding: .75rem 1.5rem;
+    margin-bottom: -2px;
+    transition: all .15s;
+  }
+  .ex-tabs .nav-link:hover { color: #111; }
+  .ex-tabs .nav-link.active { color: var(--tab-color); border-bottom-color: var(--tab-color); background: transparent; }
+  .tab-ex1 { --tab-color: #f97316; }
+  .tab-ex2 { --tab-color: #0ea5e9; }
+  .tab-ex3 { --tab-color: #8b5cf6; }
+
+  /* ── HERO ── */
+  .hero-band {
+    padding: 1.8rem 1.5rem 1.5rem;
+    border-bottom: 1px solid #e2e5eb;
+  }
+  .hero-kicker {
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    margin-bottom: .8rem;
+    line-height: 1.2;
+  }
+  .hero-body {
+    font-size: .9rem;
+    color: #374151;
+    line-height: 1.75;
+    max-width: 860px;
+  }
+  .problematique-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    background: #fff;
+    border-radius: 8px;
+    border-left: 4px solid;
+    padding: .85rem 1.1rem;
+    margin-top: 1.1rem;
+    max-width: 860px;
+  }
+  .prob-label {
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-top: .2rem;
+    flex-shrink: 0;
+    color: #9ca3af;
+  }
+  .prob-text { font-weight: 700; font-size: .9rem; color: #111; line-height: 1.45; }
+
+  /* ── PARTIE ── */
+  .part-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: 1.2rem 1.5rem .5rem;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9ca3af;
+  }
+  .part-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-wrap { padding: .5rem 1.5rem; }
+  .q-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .q-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .95rem 1.2rem .75rem;
+  }
+  .q-num {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .68rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+  .q-badges { display: flex; gap: .3rem; flex-wrap: wrap; padding-top: .15rem; flex-shrink: 0; }
+  .comp-badge {
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .07em;
+    padding: .12rem .4rem;
+    border-radius: 4px;
+    line-height: 1;
+  }
+  .badge-APP { background:#fef9c3; color:#854d0e; }
+  .badge-REA { background:#dbeafe; color:#1e40af; }
+  .badge-ANA { background:#ede9fe; color:#5b21b6; }
+  .badge-VAL { background:#dcfce7; color:#166534; }
+  .badge-COM { background:#fee2e2; color:#991b1b; }
+
+  .q-text { font-size: .92rem; line-height: 1.6; flex: 1; }
+  .q-text strong { font-weight: 700; }
+
+  .q-body { padding: 0 1.2rem 1.1rem; }
+
+  /* Appel prof */
+  .appel-bloc {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    background: #fff8f0;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: .65rem 1rem;
+    font-size: .83rem;
+    font-weight: 600;
+    color: #c2410c;
+    margin: .3rem 0 .5rem;
+  }
+  .appel-icon {
+    width: 28px; height: 28px;
+    background: #f97316;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: .75rem;
+    flex-shrink: 0;
+  }
+
+  /* MCQ */
+  .mcq-list { display: flex; flex-direction: column; gap: .4rem; }
+  .mcq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+  @media(max-width:600px){ .mcq-grid { grid-template-columns: 1fr; } }
+
+  .opt-btn {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .6rem .9rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    color: #111827;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .88rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all .15s;
+    width: 100%;
+    line-height: 1.45;
+  }
+  .opt-btn:hover:not(:disabled) { border-color: #9ca3af; background: #fff; }
+  .opt-btn:disabled { cursor: default; }
+  .opt-btn .ok { border-color: #16a34a !important; background: #f0fdf4 !important; }
+  .opt-btn.correct { border-color: #16a34a; background: #f0fdf4; }
+  .opt-btn.wrong   { border-color: #dc2626; background: #fef2f2; }
+  .opt-btn.show-correct { border-color: #16a34a; background: #f0fdf4; }
+
+  .opt-key {
+    font-size: .65rem;
+    font-weight: 800;
+    min-width: 20px; height: 20px;
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    background: #e5e7eb;
+    color: #6b7280;
+    flex-shrink: 0;
+    transition: all .15s;
+    letter-spacing: .04em;
+  }
+  .opt-btn.correct .opt-key { background: #16a34a; color: white; }
+  .opt-btn.wrong   .opt-key { background: #dc2626; color: white; }
+  .opt-btn.show-correct .opt-key { background: #16a34a; color: white; }
+
+  /* Inputs */
+  .ans-input {
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .9rem;
+    padding: .4rem .8rem;
+    outline: none;
+    transition: border-color .15s, background .15s;
+  }
+  .ans-input:focus { border-color: #6b7280; background: #fff; }
+  .ans-input.is-correct { border-color: #16a34a; background: #f0fdf4; }
+  .ans-input.is-wrong   { border-color: #dc2626; background: #fef2f2; }
+
+  /* Bouton Valider — nom distinct de Bootstrap .btn-check */
+  .btn-valider {
+    display: inline-flex !important;
+    align-items: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: .82rem;
+    letter-spacing: .03em;
+    padding: .5rem 1.25rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    clip: unset !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+  }
+  .btn-valider:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn-valider:disabled { opacity: .4 !important; cursor: default; transform: none; filter: none; }
+
+  /* Feedback */
+  .feedback-box {
+    border-radius: 8px;
+    padding: .6rem .9rem;
+    font-size: .83rem;
+    line-height: 1.55;
+    display: none;
+    margin-top: .5rem;
+  }
+  .feedback-box.show { display: block; }
+  .feedback-box.ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+  .feedback-box.ko { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+
+  /* Bouton Réessayer — dans le feedback erreur */
+  .btn-retry {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    margin-top: .55rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    padding: .35rem .9rem;
+    border-radius: 7px;
+    border: 1.5px solid #dc2626;
+    background: white;
+    color: #dc2626;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .btn-retry:hover { background: #fef2f2; }
+
+  /* Indice */
+  .hint-toggle {
+    background: none;
+    border: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .76rem;
+    font-weight: 600;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 0;
+    transition: color .15s;
+  }
+  .hint-toggle:hover { color: #6b7280; }
+  .hint-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    padding: .6rem .9rem;
+    font-size: .82rem;
+    color: #92400e;
+    line-height: 1.55;
+    display: none;
+    margin-top: .4rem;
+  }
+  .hint-box.show { display: block; }
+
+  /* Tableau variations */
+  .var-table { border-collapse: collapse; font-size: .83rem; width: 100%; }
+  .var-table th, .var-table td {
+    border: 1px solid #d1d5db;
+    padding: .4rem .6rem;
+    text-align: center;
+    min-width: 48px;
+  }
+  .var-table thead th { background: #111827; color: white; font-weight: 700; font-size: .72rem; letter-spacing: .05em; }
+  .var-table .row-label { background: #f9fafb; text-align: left; padding-left: .85rem; font-weight: 700; font-size: .8rem; }
+  .sel-cell {
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .8rem;
+    padding: .15rem .25rem;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+  }
+  .sel-cell.is-correct { border-color: #16a34a; background: #f0fdf4; }
+  .sel-cell.is-wrong   { border-color: #dc2626; background: #fef2f2; }
+
+  /* Tableau proba prix */
+  .price-table { border-collapse: collapse; font-size: .84rem; width: 100%; }
+  .price-table th, .price-table td {
+    border: 1px solid #d1d5db;
+    padding: .45rem .7rem;
+    text-align: center;
+  }
+  .price-table thead th { background: #111827; color: white; font-weight: 700; font-size: .78rem; }
+  .price-table .row-head { background: #f9fafb; text-align: left; padding-left: .9rem; font-weight: 700; }
+  .given-cell { background: #f0fdf4; color: #15803d; font-weight: 700; }
+
+  /* NumWorks */
+  .nw-container {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .nw-bar {
+    background: #1e1e2e;
+    padding: .4rem .9rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .nw-dots span { width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:.3rem; }
+  .nw-label { font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4); }
+  .nw-frame { width:100%;height:400px;border:none;display:block; }
+
+  /* Score pill floating */
+  .score-float {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    background: #111827;
+    color: white;
+    border-radius: 100px;
+    padding: .5rem 1.1rem;
+    font-size: .75rem;
+    font-weight: 700;
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    z-index: 999;
+  }
+  .score-sep { width:1px;height:12px;background:rgba(255,255,255,.2); }
+
+  /* Couleurs par exercice */
+  .ex1-color   { color: #f97316; }
+  .ex1-bg      { background: #fff7ed; }
+  .ex1-border  { border-color: #f97316 !important; }
+  .ex1-btn     { background: #f97316; color: white; }
+  .ex1-num     { background: #fed7aa; color: #ea580c; }
+
+  .ex2-color   { color: #0ea5e9; }
+  .ex2-bg      { background: #f0f9ff; }
+  .ex2-border  { border-color: #0ea5e9 !important; }
+  .ex2-btn     { background: #0ea5e9; color: white; }
+  .ex2-num     { background: #bae6fd; color: #0284c7; }
+
+  .ex3-color   { color: #8b5cf6; }
+  .ex3-bg      { background: #f5f3ff; }
+  .ex3-border  { border-color: #8b5cf6 !important; }
+  .ex3-btn     { background: #8b5cf6; color: white; }
+  .ex3-num     { background: #ddd6fe; color: #7c3aed; }
+
+  /* ── MathQuill champs de saisie mathématique ── */
+  .mq-field-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .mq-editable-field {
+    font-family: 'KaTeX_Main', Georgia, serif !important;
+    font-size: .95rem !important;
+    min-width: 220px;
+    padding: .35rem .7rem !important;
+    border: 1.5px solid #d1d5db !important;
+    border-radius: 8px !important;
+    background: #f9fafb !important;
+    cursor: text;
+    line-height: 1.8 !important;
+    transition: border-color .15s, background .15s;
+  }
+  .mq-editable-field.mq-focused {
+    border-color: #6b7280 !important;
+    background: #fff !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .mq-editable-field.is-correct {
+    border-color: #16a34a !important;
+    background: #f0fdf4 !important;
+  }
+  .mq-editable-field.is-wrong {
+    border-color: #dc2626 !important;
+    background: #fef2f2 !important;
+  }
+  /* Inputs numériques dans la ligne t du tableau */
+  .t-input {
+    border: 1.5px solid #d1d5db;
+    border-radius: 6px;
+    background: #f9fafb;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    text-align: center;
+    padding: .2rem .3rem;
+    width: 52px;
+    outline: none;
+    transition: border-color .15s, background .15s;
+  }
+  .t-input:focus { border-color: #6b7280; background: #fff; }
+  .t-input.is-correct { border-color: #16a34a; background: #f0fdf4; }
+  .t-input.is-wrong   { border-color: #dc2626; background: #fef2f2; }
+</style>
+</head>
+<body>
+
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">
+        <div class="title">Préparer le CCF</div>
+        <div class="sub">Terminale Bac Pro · Lycée Léon Chiris</div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+      <span class="badge rounded-pill" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;font-size:.72rem;font-weight:700" id="chip1">Ex.1 · 0/12</span>
+      <span class="badge rounded-pill" style="background:#f0f9ff;color:#0284c7;border:1px solid #bae6fd;font-size:.72rem;font-weight:700" id="chip2">Ex.2 · 0/8</span>
+      <span class="badge rounded-pill" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;font-size:.72rem;font-weight:700" id="chip3">Ex.3 · 0/8</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABS ── -->
+<div class="ex-tabs">
+  <ul class="nav" id="mainTabs">
+    <li class="nav-item">
+      <button class="nav-link tab-ex1 active" data-bs-toggle="tab" data-bs-target="#tab-ex1">🪂 Ex.1 · La montgolfière</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link tab-ex2" data-bs-toggle="tab" data-bs-target="#tab-ex2">🌿 Ex.2 · Émissions CO₂</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link tab-ex3" data-bs-toggle="tab" data-bs-target="#tab-ex3">🎬 Ex.3 · Le cinéma</button>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content">
+
+<!-- ═══════════════════════════════════════════════
+     EX 1 — LA MONTGOLFIÈRE  (version révisée)
+     ═══════════════════════════════════════════════ -->
+<div class="tab-pane fade show active" id="tab-ex1">
+
+  <!-- Hero -->
+  <div class="hero-band ex1-bg">
+    <div class="hero-kicker ex1-color">📐 Exercice 1 · Polynômes de degré 3 · 20–25 min</div>
+    <div class="d-flex gap-4 flex-wrap align-items-start">
+      <div style="flex:1;min-width:280px">
+        <div class="hero-title">La montgolfière d'Enzo</div>
+        <div class="hero-body">
+          Enzo souhaite tester les performances de sa montgolfière. Lors d'un vol d'essai, il enregistre son altitude en fonction du temps durant les huit premières minutes de vol.
+          Il modélise son vol par la fonction \(h\) définie sur \([0\,;\,8]\) par :
+          \[h(t) = 10t^3 - 120t^2 + 360t + 145\]
+          où \(t\) est le temps en minutes et \(h(t)\) l'altitude en mètres.
+          Il espère atteindre une <strong>vitesse d'ascension d'au moins 10 m/min</strong> et une <strong>vitesse de descente d'au moins 8 m/min</strong>.
+        </div>
+        <div class="problematique-bar ex1-border mt-3">
+          <span class="prob-label">Problématique</span>
+          <span class="prob-text">Enzo a-t-il atteint la vitesse souhaitée durant les phases d'ascension et de descente ?</span>
+        </div>
+      </div>
+      <div style="flex-shrink:0">
+        <img src="https://img.pikbest.com/origin/10/41/05/35GpIkbEsTNIZ.png!sw800"
+             alt="Montgolfière"
+             style="width:260px;max-width:100%;border-radius:14px;object-fit:cover;box-shadow:0 4px 18px rgba(0,0,0,.12)">
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE A -->
+  <div class="part-header">Partie A · Étude du vol</div>
+
+  <!-- Q1 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">1</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Calculer</strong> \(h(0)\).</p>
+      </div>
+      <div class="q-body">
+        <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+          <span class="text-muted" style="font-size:.85rem">\(h(0)\) =</span>
+          <input class="ans-input" id="e1q1" placeholder="?" style="width:90px" oninput="clr('1-1')">
+          <span class="text-muted" style="font-size:.85rem">m</span>
+          <button class="btn-valider ex1-btn" id="bv1-1" onclick="ck_e1q1()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h1-1')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-1">Pour évaluer une fonction en une valeur, on remplace la variable par cette valeur dans l'expression. Que devient chaque terme quand \(t=0\) ?</div>
+        <div class="feedback-box" id="fb1-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">2</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span></div>
+        <p class="q-text mb-0"><strong>En déduire</strong> l'altitude de départ de la montgolfière.</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e1q2A" onclick="mcq('1-2','A','A',['e1q2A','e1q2B','e1q2C'])">
+            <span class="opt-key">A</span>L'altitude de départ est 145 m, car \(h(0)=145\).
+          </button>
+          <button class="opt-btn" id="e1q2B" onclick="mcq('1-2','B','A',['e1q2A','e1q2B','e1q2C'])">
+            <span class="opt-key">B</span>L'altitude de départ est 0 m (au sol).
+          </button>
+          <button class="opt-btn" id="e1q2C" onclick="mcq('1-2','C','A',['e1q2A','e1q2B','e1q2C'])">
+            <span class="opt-key">C</span>L'altitude de départ est 360 m, car le coefficient de \(t\) est 360.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb1-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 : saisie mathématique de h'(t) -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">3</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Calculer</strong> la fonction dérivée \(h'(t)\) de la fonction \(h\).</p>
+      </div>
+      <div class="q-body">
+        <p class="text-muted mb-3" style="font-size:.85rem">
+          Saisir l'expression ci-dessous — le clavier mathématique s'affiche automatiquement.<br>
+          <em>Astuce : utilisez <kbd>^</kbd> pour les exposants, les touches du clavier habituel pour les chiffres.</em>
+        </p>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <span style="font-size:.95rem;font-weight:600">\(h'(t)\) =</span>
+          <!-- Conteneur MathQuill -->
+          <span id="mq-q3" class="mq-editable-field" style="min-width:280px"></span>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex1-btn" id="bv1-3" onclick="ck_e1q3()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h1-3')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-3">
+          La dérivée d'un polynôme s'obtient terme par terme :<br>
+          — La dérivée d'une constante est \(0\).<br>
+          — La dérivée de \(at^n\) est \(n \times a \times t^{n-1}\).<br>
+          Appliquer ces règles aux 4 termes de \(h(t) = 10t^3 - 120t^2 + 360t + 145\).
+        </div>
+        <div class="feedback-box" id="fb1-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 : NumWorks + racines + tableau de signe -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">4</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0">
+          <strong>a)</strong> À l'aide de la NumWorks, <strong>tracer</strong> la fonction dérivée \(h'(t)\) sur \([0\,;\,8]\).<br>
+          <strong>b)</strong> <strong>Déterminer graphiquement</strong> les racines de \(h'\), c'est-à-dire les valeurs de \(t\) pour lesquelles \(h'(t) = 0\).<br>
+          <strong>c)</strong> <strong>Compléter</strong> le tableau de signe de \(h'(t)\).
+        </p>
+      </div>
+      <div class="q-body">
+        <!-- NumWorks -->
+        <div class="nw-container mb-3">
+          <div class="nw-bar">
+            <div class="nw-dots">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#ffbd2e"></span>
+              <span style="background:#28c840"></span>
+            </div>
+            <span class="nw-label">NumWorks · Graphique — tracer \(h'(t) = 30t^2 - 240t + 360\)</span>
+          </div>
+          <iframe class="nw-frame" src="https://www.numworks.com/fr/emulateur/graphique/" title="NumWorks" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <!-- b) → racines à saisir directement dans le tableau ci-dessous -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem">b) &amp; c) Saisir les racines dans la ligne \(t\) du tableau, puis compléter le signe de \(h'(t)\) :</p>
+        <p class="fw-semibold mb-2" style="font-size:.88rem">c) Tableau de signe de \(h'(t)\) :</p>
+        <div class="table-responsive mb-3">
+          <table class="var-table">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding-left:.85rem;min-width:130px">\(t\)</th>
+                <th style="min-width:45px">0</th>
+                <th style="min-width:70px"></th>
+                <th style="min-width:60px"><input class="t-input" id="th4-t1-in" placeholder="?" oninput="clr('1-4')"></th>
+                <th style="min-width:70px"></th>
+                <th style="min-width:60px"><input class="t-input" id="th4-t2-in" placeholder="?" oninput="clr('1-4')"></th>
+                <th style="min-width:70px"></th>
+                <th style="min-width:45px">8</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-label">Signe de \(h'(t)\)</td>
+                <td></td>
+                <td><select class="sel-cell" id="s1a"><option value="">—</option><option>+</option><option>−</option><option>0</option></select></td>
+                <td><select class="sel-cell" id="s1b"><option value="">—</option><option>+</option><option>−</option><option>0</option></select></td>
+                <td><select class="sel-cell" id="s1c"><option value="">—</option><option>+</option><option>−</option><option>0</option></select></td>
+                <td><select class="sel-cell" id="s1d"><option value="">—</option><option>+</option><option>−</option><option>0</option></select></td>
+                <td><select class="sel-cell" id="s1e"><option value="">—</option><option>+</option><option>−</option><option>0</option></select></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex1-btn" id="bv1-4" onclick="ck_e1q4()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h1-4')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-4">
+          Pour lire les racines graphiquement : dans la NumWorks, aller dans l'onglet <strong>Graphique → Calcul → Rechercher → Zéro</strong> pour lire les abscisses des points où la courbe coupe l'axe des abscisses.<br>
+          Pour le tableau de signe : repérer le signe du coefficient dominant de \(h'(t)\) (coefficient de \(t^2\)) — il détermine le comportement du trinôme en dehors et entre ses racines.
+        </div>
+        <div class="feedback-box" id="fb1-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 : tableau de variations à 3 lignes -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">6</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Dresser</strong> le tableau de variations de \(h\) sur \([0\,;\,8]\). Saisir les flèches de variation ainsi que les images aux extremums locaux et à \(t=8\).</p>
+      </div>
+      <div class="q-body">
+        <div class="table-responsive mb-2">
+          <table class="var-table">
+            <thead>
+              <tr>
+                <th style="text-align:left;padding-left:.85rem;min-width:130px">\(t\)</th>
+                <th style="min-width:45px">0</th>
+                <th style="min-width:65px"></th>
+                <th style="min-width:45px">2</th>
+                <th style="min-width:65px"></th>
+                <th style="min-width:45px">6</th>
+                <th style="min-width:65px"></th>
+                <th style="min-width:45px">8</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Ligne 1 : valeurs hautes — maximum en t=2 et h(8) -->
+              <tr>
+                <td class="row-label" style="font-size:.75rem;color:#6b7280">max · valeur en 8</td>
+                <td></td>
+                <td></td>
+                <td><input class="ans-input" id="v5-max" placeholder="?" style="width:60px;font-size:.8rem;padding:.3rem .4rem" oninput="clr('1-5')"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input class="ans-input" id="v5-h8in" placeholder="?" style="width:60px;font-size:.8rem;padding:.3rem .4rem" oninput="clr('1-5')"></td>
+              </tr>
+              <!-- Ligne 2 : flèches de variation -->
+              <tr>
+                <td class="row-label">Variations de \(h\)</td>
+                <td></td>
+                <td><select class="sel-cell" id="s1f"><option value="">—</option><option>↗</option><option>↘</option></select></td>
+                <td></td>
+                <td><select class="sel-cell" id="s1g"><option value="">—</option><option>↗</option><option>↘</option></select></td>
+                <td></td>
+                <td><select class="sel-cell" id="s1h"><option value="">—</option><option>↗</option><option>↘</option></select></td>
+                <td></td>
+              </tr>
+              <!-- Ligne 3 : valeurs basses — h(0)=145 fixe ET h(6) à saisir sur la même ligne -->
+              <tr>
+                <td class="row-label" style="font-size:.75rem;color:#6b7280">min · valeur en 0</td>
+                <td style="font-weight:700;font-size:.88rem;color:#374151">145</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input class="ans-input" id="v5-min" placeholder="?" style="width:60px;font-size:.8rem;padding:.3rem .4rem" oninput="clr('1-5')"></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex1-btn" id="bv1-5" onclick="ck_e1q5()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h1-5')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-5">
+          Le sens de variation se déduit du signe de \(h'\) : si \(h' > 0\), la fonction est <em>croissante</em> ; si \(h' < 0\), elle est <em>décroissante</em>.<br>
+          Pour calculer les images aux points remarquables, remplacer la valeur de \(t\) dans l'expression de \(h(t)\). Utiliser la NumWorks si besoin.
+        </div>
+        <div class="feedback-box" id="fb1-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">7</span>
+        <div class="q-badges"><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0"><strong>Combien</strong> Enzo a-t-il effectué de phases d'ascension ? De descente ?</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e1q7A" onclick="mcq('1-7','A','B',['e1q7A','e1q7B','e1q7C'])">
+            <span class="opt-key">A</span>1 phase d'ascension et 1 phase de descente.
+          </button>
+          <button class="opt-btn" id="e1q7B" onclick="mcq('1-7','B','B',['e1q7A','e1q7B','e1q7C'])">
+            <span class="opt-key">B</span>2 phases d'ascension et 1 phase de descente.
+          </button>
+          <button class="opt-btn" id="e1q7C" onclick="mcq('1-7','C','B',['e1q7A','e1q7B','e1q7C'])">
+            <span class="opt-key">C</span>1 phase d'ascension et 2 phases de descente.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb1-7"></div>
+        <div class="appel-bloc mt-2">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°1</strong> · Appeler le professeur afin de lui décrire oralement le vol et les phases d'ascension et de descente.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIE B -->
+  <div class="part-header">Partie B · Étude de la vitesse entre les altitudes 200 m et 400 m</div>
+
+  <!-- Q8 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">8</span>
+        <div class="q-badges"><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0"><strong>Déduire</strong> du tableau de variations le nombre de solutions des équations \(h(t)=200\) et \(h(t)=400\).</p>
+      </div>
+      <div class="q-body">
+        <div class="row g-2">
+          <div class="col-md-6">
+            <p class="mb-1" style="font-size:.82rem;font-weight:600;color:#6b7280">\(h(t)=200\) admet :</p>
+            <div class="mcq-list">
+              <button class="opt-btn" id="e1q8aA" onclick="mcq('1-8a','A','C',['e1q8aA','e1q8aB','e1q8aC'])"><span class="opt-key">A</span>1 solution</button>
+              <button class="opt-btn" id="e1q8aB" onclick="mcq('1-8a','B','C',['e1q8aA','e1q8aB','e1q8aC'])"><span class="opt-key">B</span>2 solutions</button>
+              <button class="opt-btn" id="e1q8aC" onclick="mcq('1-8a','C','C',['e1q8aA','e1q8aB','e1q8aC'])"><span class="opt-key">C</span>3 solutions</button>
+            </div>
+            <div class="feedback-box" id="fb1-8a"></div>
+          </div>
+          <div class="col-md-6">
+            <p class="mb-1" style="font-size:.82rem;font-weight:600;color:#6b7280">\(h(t)=400\) admet :</p>
+            <div class="mcq-list">
+              <button class="opt-btn" id="e1q8bA" onclick="mcq('1-8b','A','C',['e1q8bA','e1q8bB','e1q8bC'])"><span class="opt-key">A</span>1 solution</button>
+              <button class="opt-btn" id="e1q8bB" onclick="mcq('1-8b','B','C',['e1q8bA','e1q8bB','e1q8bC'])"><span class="opt-key">B</span>2 solutions</button>
+              <button class="opt-btn" id="e1q8bC" onclick="mcq('1-8b','C','C',['e1q8bA','e1q8bB','e1q8bC'])"><span class="opt-key">C</span>3 solutions</button>
+            </div>
+            <div class="feedback-box" id="fb1-8b"></div>
+          </div>
+        </div>
+        <div class="d-flex mt-2">
+          <button class="hint-toggle" onclick="tH('h1-8')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-8">Comparer la valeur \(c\) aux extremums locaux du tableau de variations. Une droite horizontale \(y=c\) coupe la courbe autant de fois qu'il y a de changements de monotonie où \(c\) est comprise entre les valeurs encadrantes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9-10-11 : NumWorks + saisie des solutions -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex1-num">9–11</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0">
+          <strong>9.</strong> Tracer la fonction \(h\) sur \([0\,;\,8]\).<br>
+          <strong>10.</strong> Tracer les droites d'équation \(y=200\) et \(y=400\).<br>
+          <strong>11.</strong> Placer les points d'intersection, puis saisir ci-dessous les valeurs précises des \(t\) solutions (arrondir à 0,01).
+        </p>
+      </div>
+      <div class="q-body">
+        <div class="nw-container mb-3">
+          <div class="nw-bar">
+            <div class="nw-dots">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#ffbd2e"></span>
+              <span style="background:#28c840"></span>
+            </div>
+            <span class="nw-label">NumWorks · Graphique — tracer \(h(t)\), \(y=200\) et \(y=400\)</span>
+          </div>
+          <iframe class="nw-frame" src="https://www.numworks.com/fr/emulateur/graphique/" title="NumWorks" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <!-- Solutions h(t)=200 -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem">Solutions de \(h(t) = 200\) :</p>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_1\) ≈</span>
+            <input class="ans-input" id="e1q9a" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_2\) ≈</span>
+            <input class="ans-input" id="e1q9b" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_3\) ≈</span>
+            <input class="ans-input" id="e1q9c" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+        </div>
+
+        <!-- Solutions h(t)=400 -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem">Solutions de \(h(t) = 400\) :</p>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_1\) ≈</span>
+            <input class="ans-input" id="e1q9d" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_2\) ≈</span>
+            <input class="ans-input" id="e1q9e" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(t_3\) ≈</span>
+            <input class="ans-input" id="e1q9f" placeholder="0,??" style="width:80px" oninput="clr('1-9')">
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex1-btn" id="bv1-9" onclick="ck_e1q9()">Valider les solutions</button>
+          <button class="hint-toggle" onclick="tH('h1-9')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-9">Dans la NumWorks, utiliser <em>Grapher → Analyse → Intersection</em> pour obtenir précisément les coordonnées des points de croisement entre la courbe de \(h\) et les droites horizontales.</div>
+
+        <div class="feedback-box" id="fb1-9"></div>
+
+        <div class="appel-bloc mt-3">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°2</strong> · Appeler le professeur afin de lui montrer le graphique.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q12 : CONCLUSION — réponse à la problématique -->
+  <div class="q-wrap mb-4">
+    <div class="q-card" style="border-color:#f97316">
+      <div class="q-header">
+        <span class="q-num ex1-num">12</span>
+        <div class="q-badges"><span class="comp-badge badge-VAL">VAL</span><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0">
+          <strong>Répondre à la problématique.</strong><br>
+          <span class="text-muted" style="font-size:.88rem">La vitesse moyenne correspond à la variation d'altitude divisée par la durée. Rappel : Enzo vise ≥ 10 m/min à la montée et ≥ 8 m/min à la descente.</span>
+        </p>
+      </div>
+      <div class="q-body">
+        <!-- Phase d'ascension principale [0;2] -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem;color:#374151">Phase d'ascension principale sur \([0\,;\,2]\) :</p>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-1">
+          <span class="text-muted" style="font-size:.85rem">Variation d'altitude \(= h(2)-h(0)\) =</span>
+          <input class="ans-input" id="e1q12a" placeholder="? m" style="width:80px" oninput="clr('1-12')">
+          <span class="text-muted" style="font-size:.85rem">m</span>
+        </div>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <span class="text-muted" style="font-size:.85rem">Vitesse moyenne =</span>
+          <input class="ans-input" id="e1q12b" placeholder="? m/min" style="width:90px" oninput="clr('1-12')">
+          <span class="text-muted" style="font-size:.85rem">m/min</span>
+        </div>
+
+        <!-- Phase de descente [2;6] -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem;color:#374151">Phase de descente sur \([2\,;\,6]\) :</p>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-1">
+          <span class="text-muted" style="font-size:.85rem">Variation d'altitude \(= |h(6)-h(2)|\) =</span>
+          <input class="ans-input" id="e1q12c" placeholder="? m" style="width:80px" oninput="clr('1-12')">
+          <span class="text-muted" style="font-size:.85rem">m</span>
+        </div>
+        <div class="d-flex align-items-center gap-3 flex-wrap mb-3">
+          <span class="text-muted" style="font-size:.85rem">Vitesse moyenne =</span>
+          <input class="ans-input" id="e1q12d" placeholder="? m/min" style="width:90px" oninput="clr('1-12')">
+          <span class="text-muted" style="font-size:.85rem">m/min</span>
+        </div>
+
+        <!-- Conclusion -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem;color:#374151">Conclusion :</p>
+        <div class="mcq-list mb-2">
+          <button class="opt-btn" id="e1q12eA" onclick="mcq('1-12e','A','A',['e1q12eA','e1q12eB','e1q12eC'])">
+            <span class="opt-key">A</span>Oui — la vitesse d'ascension (160 m/min) dépasse 10 m/min et la vitesse de descente (80 m/min) dépasse 8 m/min. Enzo a atteint les deux objectifs.
+          </button>
+          <button class="opt-btn" id="e1q12eB" onclick="mcq('1-12e','B','A',['e1q12eA','e1q12eB','e1q12eC'])">
+            <span class="opt-key">B</span>Non — la vitesse d'ascension est suffisante mais la vitesse de descente est inférieure à 8 m/min.
+          </button>
+          <button class="opt-btn" id="e1q12eC" onclick="mcq('1-12e','C','A',['e1q12eA','e1q12eB','e1q12eC'])">
+            <span class="opt-key">C</span>Non — aucune des deux vitesses n'atteint l'objectif.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb1-12e"></div>
+
+        <div class="d-flex align-items-center gap-2 flex-wrap mt-2">
+          <button class="btn-valider ex1-btn" id="bv1-12" onclick="ck_e1q12()">Valider les calculs</button>
+          <button class="hint-toggle" onclick="tH('h1-12')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h1-12">
+          La vitesse moyenne entre deux instants \(t_a\) et \(t_b\) est : \(\dfrac{h(t_b)-h(t_a)}{t_b - t_a}\).<br>
+          Pour la descente, on prend la valeur absolue de la variation pour exprimer la vitesse de descente positivement.
+        </div>
+        <div class="feedback-box" id="fb1-12"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-ex1 -->
+
+
+<!-- ═══════════════════════════════════════════════
+     EX 2 — BATTERIE LITHIUM
+     ═══════════════════════════════════════════════ -->
+<div class="tab-pane fade" id="tab-ex2">
+
+  <div class="hero-band ex2-bg">
+    <div class="hero-kicker ex2-color">📈 Exercice 2 · Suites géométriques · 20–25 min</div>
+    <div class="d-flex gap-3 flex-wrap align-items-center">
+      <div style="flex:1;min-width:260px">
+        <div class="hero-title">Dégradation d'une batterie lithium-ion</div>
+        <div class="hero-body">
+          Un technicien en électrotechnique teste une batterie lithium-ion neuve de capacité initiale <strong>100 Ah</strong>. À chaque cycle complet de charge/décharge, la batterie perd <strong>8 % de sa capacité résiduelle</strong>.<br><br>
+          On note \(u_n\) la capacité de la batterie (en Ah) après \(n\) cycles.<br><br>
+          Le constructeur préconise de <strong>remplacer la batterie</strong> dès que sa capacité descend sous <strong>40 Ah</strong>. Le cahier des charges de l'installation impose que la <strong>capacité totale cumulée</strong> sur l'ensemble des cycles d'utilisation soit d'au moins <strong>700 Ah</strong> avant le remplacement.
+        </div>
+        <div class="problematique-bar ex2-border mt-3">
+          <span class="prob-label">Problématique</span>
+          <span class="prob-text">La batterie respecte-t-elle le cahier des charges avant d'être remplacée au cycle 12 ?</span>
+        </div>
+      </div>
+      <div style="flex:0 0 320px;max-width:320px;text-align:center">
+        <img src="https://tinycircuits.com/cdn/shop/products/Batt-1000mAh-Product-Photo-01.png?v=1577129646"
+             alt="Batterie lithium-ion"
+             style="width:100%;max-width:320px;object-fit:contain;display:block"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <div class="part-header">Partie A · Analyse de la suite</div>
+
+  <!-- Q1 : u0 et q -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">1</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0">
+          <strong>Identifier</strong> le premier terme \(u_0\) et la raison \(q\) de la suite \((u_n)\).<br>
+          <strong>Expliquer</strong> pourquoi \((u_n)\) est une suite géométrique.
+        </p>
+      </div>
+      <div class="q-body">
+        <div class="row g-2 mb-2">
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_0\) =</span>
+            <input class="ans-input" id="e2q1a" placeholder="?" style="width:85px" oninput="clr('2-1')">
+            <span class="text-muted" style="font-size:.85rem">Ah</span>
+          </div>
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(q\) =</span>
+            <input class="ans-input" id="e2q1b" placeholder="0,??" style="width:85px" oninput="clr('2-1')">
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex2-btn" id="bv2-1" onclick="ck_e2q1()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h2-1')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-1">
+          Le premier terme \(u_0\) est la capacité au démarrage (avant tout cycle).<br>
+          La suite est géométrique car chaque terme s'obtient en <em>multipliant</em> le précédent par le même facteur. Perdre 8 % signifie conserver … % de la capacité, soit multiplier par …
+        </div>
+        <div class="feedback-box" id="fb2-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 : relation de récurrence -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">2</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span></div>
+        <p class="q-text mb-0"><strong>En déduire</strong> la relation de récurrence de la suite \((u_n)\).</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e2q2A" onclick="mcq('2-2','A','B',['e2q2A','e2q2B','e2q2C','e2q2D'])">
+            <span class="opt-key">A</span>\(u_{n+1} = u_n - 8\)
+          </button>
+          <button class="opt-btn" id="e2q2B" onclick="mcq('2-2','B','B',['e2q2A','e2q2B','e2q2C','e2q2D'])">
+            <span class="opt-key">B</span>\(u_{n+1} = u_n \times 0{,}92\)
+          </button>
+          <button class="opt-btn" id="e2q2C" onclick="mcq('2-2','C','B',['e2q2A','e2q2B','e2q2C','e2q2D'])">
+            <span class="opt-key">C</span>\(u_{n+1} = u_n \times 1{,}08\)
+          </button>
+          <button class="opt-btn" id="e2q2D" onclick="mcq('2-2','D','B',['e2q2A','e2q2B','e2q2C','e2q2D'])">
+            <span class="opt-key">D</span>\(u_{n+1} = u_n + 0{,}92\)
+          </button>
+        </div>
+        <div class="d-flex mt-2">
+          <button class="hint-toggle" onclick="tH('h2-2')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-2">
+          La relation de récurrence d'une suite géométrique de raison \(q\) est : \(u_{n+1} = u_n \times q\).<br>
+          Remplacer \(q\) par la valeur trouvée à la question 1.
+        </div>
+        <div class="feedback-box" id="fb2-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 : calcul u2, u3, u4, u5 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">3</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Calculer</strong> \(u_2\), \(u_3\), \(u_4\) et \(u_5\) à l'aide de la relation de récurrence. Arrondir à 0,01 Ah.</p>
+      </div>
+      <div class="q-body">
+        <div class="row g-2 mb-2">
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_2\) ≈</span>
+            <input class="ans-input" id="e2q3a" placeholder="?" style="width:82px" oninput="clr('2-3')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_3\) ≈</span>
+            <input class="ans-input" id="e2q3b" placeholder="?" style="width:82px" oninput="clr('2-3')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_4\) ≈</span>
+            <input class="ans-input" id="e2q3c" placeholder="?" style="width:82px" oninput="clr('2-3')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_5\) ≈</span>
+            <input class="ans-input" id="e2q3d" placeholder="?" style="width:82px" oninput="clr('2-3')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex2-btn" id="bv2-3" onclick="ck_e2q3()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h2-3')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-3">
+          Utiliser la relation de récurrence trouvée à la question 2 : chaque terme s'obtient en multipliant le précédent par la raison.<br>
+          Partir de \(u_1\) (que vous pouvez calculer à partir de \(u_0\)) et appliquer la relation de proche en proche.
+        </div>
+        <div class="feedback-box" id="fb2-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 : nuage de points NumWorks + variations -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">4</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0">
+          <strong>a)</strong> À l'aide de la NumWorks, saisir les points \((n\,;\,u_n)\) pour \(n\) allant de 0 à 5 dans l'application <strong>Statistiques</strong> et tracer le nuage de points.<br>
+          <strong>b)</strong> En déduire le sens de variation de la suite \((u_n)\).
+        </p>
+      </div>
+      <div class="q-body">
+        <div class="nw-container mb-3">
+          <div class="nw-bar">
+            <div class="nw-dots">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#ffbd2e"></span>
+              <span style="background:#28c840"></span>
+            </div>
+            <span class="nw-label">NumWorks · Statistiques — saisir les points \((n\,;\,u_n)\)</span>
+          </div>
+          <iframe class="nw-frame" src="https://www.numworks.com/fr/emulateur/graphique/" title="NumWorks" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <p class="fw-semibold mb-2" style="font-size:.88rem">b) La suite \((u_n)\) est :</p>
+        <div class="mcq-list">
+          <button class="opt-btn" id="e2q4A" onclick="mcq('2-4','A','B',['e2q4A','e2q4B','e2q4C'])">
+            <span class="opt-key">A</span>Strictement croissante — la capacité augmente à chaque cycle.
+          </button>
+          <button class="opt-btn" id="e2q4B" onclick="mcq('2-4','B','B',['e2q4A','e2q4B','e2q4C'])">
+            <span class="opt-key">B</span>Strictement décroissante — la capacité diminue à chaque cycle.
+          </button>
+          <button class="opt-btn" id="e2q4C" onclick="mcq('2-4','C','B',['e2q4A','e2q4B','e2q4C'])">
+            <span class="opt-key">C</span>Constante — la capacité ne change pas.
+          </button>
+        </div>
+        <div class="appel-bloc mt-2">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°1</strong> · Appeler le professeur afin de lui montrer le nuage de points et lui expliquer les variations.</span>
+        </div>
+        <div class="feedback-box" id="fb2-4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="part-header">Partie B · Expression explicite et calculs</div>
+
+  <!-- Q5 : expression u_n en fonction de n -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">5</span>
+        <div class="q-badges"><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0"><strong>Cocher</strong> l'expression du terme général \(u_n\) en fonction de \(n\) (relation explicite).</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-grid">
+          <button class="opt-btn" id="e2q5A" onclick="mcq('2-5','A','A',['e2q5A','e2q5B','e2q5C','e2q5D'])">
+            <span class="opt-key">A</span>\(u_n = 100 \times 0{,}92^n\)
+          </button>
+          <button class="opt-btn" id="e2q5B" onclick="mcq('2-5','B','A',['e2q5A','e2q5B','e2q5C','e2q5D'])">
+            <span class="opt-key">B</span>\(u_n = 100 \times 0{,}08^n\)
+          </button>
+          <button class="opt-btn" id="e2q5C" onclick="mcq('2-5','C','A',['e2q5A','e2q5B','e2q5C','e2q5D'])">
+            <span class="opt-key">C</span>\(u_n = 100 - 8n\)
+          </button>
+          <button class="opt-btn" id="e2q5D" onclick="mcq('2-5','D','A',['e2q5A','e2q5B','e2q5C','e2q5D'])">
+            <span class="opt-key">D</span>\(u_n = 100 \times 1{,}08^n\)
+          </button>
+        </div>
+        <div class="d-flex mt-2">
+          <button class="hint-toggle" onclick="tH('h2-5')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-5">
+          Pour une suite géométrique de premier terme \(u_0\) et de raison \(q\), il existe une formule directe qui exprime \(u_n\) sans passer par les termes précédents.<br>
+          Vérifier la cohérence avec \(n=0\) et en comparant avec les valeurs calculées à la question 3.
+        </div>
+        <div class="feedback-box" id="fb2-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 : calcul u10 ou u12 -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">6</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0">
+          <strong>Calculer</strong> \(u_{10}\) et \(u_{12}\) à l'aide de la relation explicite. Arrondir à 0,01 Ah.
+        </p>
+      </div>
+      <div class="q-body">
+        <div class="row g-2 mb-2">
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_{10}\) ≈</span>
+            <input class="ans-input" id="e2q6a" placeholder="?" style="width:90px" oninput="clr('2-6')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+          <div class="col-auto d-flex align-items-center gap-2">
+            <span class="text-muted" style="font-size:.85rem">\(u_{12}\) ≈</span>
+            <input class="ans-input" id="e2q6b" placeholder="?" style="width:90px" oninput="clr('2-6')">
+            <span class="text-muted" style="font-size:.75rem">Ah</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex2-btn" id="bv2-6" onclick="ck_e2q6()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h2-6')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-6">
+          Utiliser l'expression explicite trouvée à la question 5 en remplaçant \(n\) par la valeur cherchée.<br>
+          La touche <kbd>^</kbd> de la NumWorks permet de calculer une puissance.
+        </div>
+        <div class="feedback-box" id="fb2-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 : somme des termes -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex2-num">7</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span><span class="comp-badge badge-VAL">VAL</span></div>
+        <p class="q-text mb-0">
+          <strong>Calculer</strong> la somme \(S = u_0 + u_1 + \cdots + u_{11}\) des 12 premiers termes à l'aide de la formule de la somme d'une suite géométrique, puis <strong>vérifier</strong> le résultat avec la NumWorks.<br>
+          <span class="text-muted" style="font-size:.85rem">Cette somme représente la capacité totale utilisée sur les 12 premiers cycles (en Ah).</span>
+        </p>
+      </div>
+      <div class="q-body">
+        <!-- Calcul par la formule -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem">a) Calcul par la formule :</p>
+        <div class="mb-2" style="font-size:.88rem;color:#374151;background:#f9fafb;border-radius:8px;padding:.65rem .9rem;border:1px solid #e5e7eb">
+          \(S = \text{premier terme} \times \dfrac{1 - q^{\text{nombre de termes}}}{1 - q}\)
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap mb-3">
+          <span class="text-muted" style="font-size:.85rem">\(S\) ≈</span>
+          <input class="ans-input" id="e2q7a" placeholder="? Ah" style="width:110px" oninput="clr('2-7')">
+          <span class="text-muted" style="font-size:.85rem">Ah</span>
+          <button class="btn-valider ex2-btn" id="bv2-7" onclick="ck_e2q7()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h2-7')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h2-7">
+          Identifier les trois éléments nécessaires à la formule : le premier terme, la raison et le nombre de termes (de \(u_0\) à \(u_{11}\)).<br>
+          Bien distinguer le nombre de termes (12) de la valeur du dernier indice (11).
+        </div>
+        <div class="feedback-box" id="fb2-7"></div>
+
+        <!-- Vérification NumWorks -->
+        <p class="fw-semibold mb-2 mt-3" style="font-size:.88rem">b) Vérification avec la NumWorks :</p>
+        <div class="nw-container mb-2">
+          <div class="nw-bar">
+            <div class="nw-dots">
+              <span style="background:#ff5f57"></span>
+              <span style="background:#ffbd2e"></span>
+              <span style="background:#28c840"></span>
+            </div>
+            <span class="nw-label">NumWorks · Calcul — vérifier la somme</span>
+          </div>
+          <iframe class="nw-frame" src="https://www.numworks.com/fr/emulateur/graphique/" title="NumWorks" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="appel-bloc">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°2</strong> · Appeler le professeur afin de lui présenter le calcul de la somme et la vérification NumWorks.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 : conclusion problématique -->
+  <div class="q-wrap mb-4">
+    <div class="q-card" style="border-color:#0ea5e9">
+      <div class="q-header">
+        <span class="q-num ex2-num">8</span>
+        <div class="q-badges"><span class="comp-badge badge-VAL">VAL</span><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0"><strong>Répondre</strong> à la problématique. La batterie respecte-t-elle le cahier des charges (capacité cumulée ≥ 700 Ah avant remplacement au cycle 12) ?</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e2q8A" onclick="mcq('2-8','A','B',['e2q8A','e2q8B','e2q8C'])">
+            <span class="opt-key">A</span>Non — la capacité cumulée \(S\) est inférieure à 700 Ah : le cahier des charges n'est pas respecté.
+          </button>
+          <button class="opt-btn" id="e2q8B" onclick="mcq('2-8','B','B',['e2q8A','e2q8B','e2q8C'])">
+            <span class="opt-key">B</span>Oui — la capacité cumulée \(S \approx 755\) Ah est supérieure à 700 Ah : le cahier des charges est respecté.
+          </button>
+          <button class="opt-btn" id="e2q8C" onclick="mcq('2-8','C','B',['e2q8A','e2q8B','e2q8C'])">
+            <span class="opt-key">C</span>On ne peut pas conclure sans connaître la somme exacte.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb2-8"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-ex2 -->
+
+
+<!-- ═══════════════════════════════════════════════
+     EX 3 — LE CINÉMA
+     ═══════════════════════════════════════════════ -->
+<div class="tab-pane fade" id="tab-ex3">
+
+  <div class="hero-band ex3-bg">
+    <div class="hero-kicker ex3-color">🎲 Exercice 3 · Probabilités · 15–20 min</div>
+    <div class="d-flex gap-3 flex-wrap align-items-center">
+      <div style="flex:1;min-width:260px">
+        <div class="hero-title">Une soirée au cinéma</div>
+        <div class="hero-body">
+          Un mardi soir, <strong>300 spectateurs</strong> sont venus au cinéma. Deux films sont à l'affiche : <strong>Le château-ambulance</strong> (animation, 6 €) et <strong>Les Vengeurs : Fin du jeu</strong> (3D, 8 €). Les bonbons coûtent 4 €.<br><br>
+          On sait que :
+          <ul class="mt-2 mb-1" style="line-height:1.9">
+            <li><strong>200 spectateurs</strong> ont vu le film d'animation, les 100 autres ont vu le film 3D.</li>
+            <li>Parmi les spectateurs du film d'animation, <strong>120 ont pris des bonbons</strong>.</li>
+            <li>Parmi les spectateurs du film 3D, <strong>25 ont pris des bonbons</strong>.</li>
+          </ul>
+          On choisit au hasard un spectateur. On note :<br>
+          <strong>A</strong> : « le spectateur a vu le film d'animation » &nbsp;·&nbsp; <strong>B</strong> : « le spectateur a acheté des bonbons ».
+        </div>
+        <div class="problematique-bar ex3-border mt-3">
+          <span class="prob-label">Problématique</span>
+          <span class="prob-text">En appliquant la formule des probabilités totales, quelle est la probabilité qu'un spectateur pris au hasard ait acheté des bonbons ?</span>
+        </div>
+      </div>
+      <div style="flex:0 0 260px;max-width:260px;text-align:center">
+        <img src="https://png.pngtree.com/png-vector/20250506/ourmid/pngtree-popcorn-and-3d-glasses-for-cinema-essentials-indicating-a-soothing-movie-png-image_16172008.png"
+             alt="Cinéma popcorn"
+             style="width:100%;max-width:260px;object-fit:contain"
+             onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <div class="part-header">Questions</div>
+
+  <!-- Q1 : événement Ā -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">1</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0">À quoi correspond l'événement \(\bar{A}\) ?</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e3q1A" onclick="mcq('3-1','A','B',['e3q1A','e3q1B','e3q1C'])">
+            <span class="opt-key">A</span>Le spectateur a acheté des bonbons.
+          </button>
+          <button class="opt-btn" id="e3q1B" onclick="mcq('3-1','B','B',['e3q1A','e3q1B','e3q1C'])">
+            <span class="opt-key">B</span>Le spectateur a vu le film 3D (Les Vengeurs).
+          </button>
+          <button class="opt-btn" id="e3q1C" onclick="mcq('3-1','C','B',['e3q1A','e3q1B','e3q1C'])">
+            <span class="opt-key">C</span>Le spectateur n'a pas acheté de bonbons.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb3-1"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2a : tableau croisé d'effectifs -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">2a</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Compléter</strong> le tableau croisé d'effectifs ci-dessous.</p>
+      </div>
+      <div class="q-body">
+        <div class="table-responsive mb-3">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>\(B\)</th>
+                <th>\(\bar{B}\)</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="row-head">\(A\)</td>
+                <td class="given-cell">120</td>
+                <td><input class="ans-input" id="e3tab1" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+                <td><input class="ans-input" id="e3tab5" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+              </tr>
+              <tr>
+                <td class="row-head">\(\bar{A}\)</td>
+                <td class="given-cell">25</td>
+                <td><input class="ans-input" id="e3tab2" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+                <td><input class="ans-input" id="e3tab6" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+              </tr>
+              <tr>
+                <td class="row-head" style="font-weight:800">Total</td>
+                <td><input class="ans-input" id="e3tab3" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+                <td><input class="ans-input" id="e3tab4" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+                <td><input class="ans-input" id="e3tab7" placeholder="?" style="width:70px;font-size:.83rem;padding:.3rem .5rem" oninput="clr('3-2a')"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex3-btn" id="bv3-2a" onclick="ck_e3q2a()">Valider le tableau</button>
+          <button class="hint-toggle" onclick="tH('h3-2a')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h3-2a">
+          Dans chaque ligne, la somme des deux premières colonnes doit être égale au total de la ligne.<br>
+          Dans chaque colonne, la somme des deux premières lignes doit être égale au total de la colonne.
+        </div>
+        <div class="feedback-box" id="fb3-2a"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2b : arbre avec toutes les branches à compléter -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">2b</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Compléter</strong> l'arbre de probabilités pondéré ci-dessous en saisissant <em>toutes</em> les probabilités des branches et les probabilités d'intersection.</p>
+      </div>
+      <div class="q-body">
+        <div class="bg-light border rounded p-3 mb-3" style="overflow-x:auto">
+          <svg viewBox="0 0 660 310" style="width:100%;min-width:480px;max-width:660px;display:block;margin:0 auto" font-family="Plus Jakarta Sans,sans-serif" font-size="12">
+            <!-- Racine -->
+            <circle cx="55" cy="155" r="6" fill="#111827"/>
+
+            <!-- ══ Branche A ══ -->
+            <line x1="61" y1="151" x2="195" y2="88" stroke="#8b5cf6" stroke-width="1.8"/>
+            <!-- label P(A) -->
+            <text x="80" y="108" fill="#8b5cf6" font-weight="700" font-size="11.5">P(A) =</text>
+            <foreignObject x="122" y="94" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pA" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="200" cy="86" r="5" fill="#8b5cf6"/>
+            <text x="212" y="82" fill="#111" font-weight="800" font-size="14">A</text>
+
+            <!-- Branche B|A -->
+            <line x1="206" y1="82" x2="368" y2="44" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="240" y="55" fill="#15803d" font-weight="700" font-size="11">P(B|A) =</text>
+            <foreignObject x="295" y="41" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pAB" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="373" cy="42" r="4" fill="#16a34a"/>
+            <text x="382" y="46" fill="#111" font-weight="700">B</text>
+            <text x="415" y="46" fill="#6b7280" font-size="11">→ P(A∩B) =</text>
+            <foreignObject x="502" y="32" width="64" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3tree1" placeholder="?" style="width:62px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+
+            <!-- Branche B̄|A -->
+            <line x1="206" y1="90" x2="368" y2="128" stroke="#9ca3af" stroke-width="1.5"/>
+            <text x="232" y="124" fill="#6b7280" font-weight="700" font-size="11">P(B̄|A) =</text>
+            <foreignObject x="288" y="110" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pABbar" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="373" cy="128" r="4" fill="#9ca3af"/>
+            <text x="382" y="132" fill="#111" font-weight="700">B̄</text>
+            <text x="415" y="132" fill="#6b7280" font-size="11">→ P(A∩B̄) =</text>
+            <foreignObject x="502" y="118" width="64" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3tree2" placeholder="?" style="width:62px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+
+            <!-- ══ Branche Ā ══ -->
+            <line x1="61" y1="159" x2="195" y2="222" stroke="#f97316" stroke-width="1.8"/>
+            <!-- label P(Ā) — Ā en Unicode -->
+            <text x="80" y="208" fill="#f97316" font-weight="700" font-size="11.5">P(Ā) =</text>
+            <foreignObject x="122" y="194" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pAbar" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="200" cy="224" r="5" fill="#f97316"/>
+            <text x="212" y="229" fill="#111" font-weight="800" font-size="14">Ā</text>
+
+            <!-- Branche B|Ā -->
+            <line x1="206" y1="220" x2="368" y2="182" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="232" y="192" fill="#15803d" font-weight="700" font-size="11">P(B|Ā) =</text>
+            <foreignObject x="290" y="178" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pAbarB" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="373" cy="180" r="4" fill="#16a34a"/>
+            <text x="382" y="184" fill="#111" font-weight="700">B</text>
+            <text x="415" y="184" fill="#6b7280" font-size="11">→ P(Ā∩B) =</text>
+            <foreignObject x="502" y="170" width="64" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3tree3" placeholder="?" style="width:62px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+
+            <!-- Branche B̄|Ā -->
+            <line x1="206" y1="228" x2="368" y2="266" stroke="#9ca3af" stroke-width="1.5"/>
+            <text x="224" y="262" fill="#6b7280" font-weight="700" font-size="11">P(B̄|Ā) =</text>
+            <foreignObject x="282" y="248" width="60" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3b-pAbarBbar" placeholder="?" style="width:58px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+            <circle cx="373" cy="266" r="4" fill="#9ca3af"/>
+            <text x="382" y="270" fill="#111" font-weight="700">B̄</text>
+            <text x="415" y="270" fill="#6b7280" font-size="11">→ P(Ā∩B̄) =</text>
+            <foreignObject x="502" y="256" width="64" height="22">
+              <input xmlns="http://www.w3.org/1999/xhtml" class="ans-input" id="e3tree4" placeholder="?" style="width:62px;font-size:11px;padding:.15rem .35rem" oninput="clr('3-2b')">
+            </foreignObject>
+          </svg>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex3-btn" id="bv3-2b" onclick="ck_e3q2b()">Valider l'arbre</button>
+          <button class="hint-toggle" onclick="tH('h3-2b')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h3-2b">
+          Les probabilités des branches se lisent dans le tableau croisé : diviser les effectifs par le total de la ligne concernée pour les probabilités conditionnelles, par 300 pour les intersections.<br>
+          La somme des deux branches issues d'un même nœud est toujours égale à 1.
+        </div>
+        <div class="appel-bloc mt-2">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°1</strong> · Appeler le professeur afin de lui montrer l'arbre de probabilités pondéré.</span>
+        </div>
+        <div class="feedback-box" id="fb3-2b"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3a -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">3a</span>
+        <div class="q-badges"><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0">À quoi correspond l'événement \(A \cap B\) ?</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e3q3aA" onclick="mcq('3-3a','A','C',['e3q3aA','e3q3aB','e3q3aC'])">
+            <span class="opt-key">A</span>Le client a vu le film d'animation ou a acheté des bonbons.
+          </button>
+          <button class="opt-btn" id="e3q3aB" onclick="mcq('3-3a','B','C',['e3q3aA','e3q3aB','e3q3aC'])">
+            <span class="opt-key">B</span>Le client a vu le film 3D et a acheté des bonbons.
+          </button>
+          <button class="opt-btn" id="e3q3aC" onclick="mcq('3-3a','C','C',['e3q3aA','e3q3aB','e3q3aC'])">
+            <span class="opt-key">C</span>Le client a vu le film d'animation et a acheté des bonbons.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb3-3a"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3c -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">3b</span>
+        <div class="q-badges"><span class="comp-badge badge-ANA">ANA</span></div>
+        <p class="q-text mb-0"><strong>En déduire</strong> la probabilité qu'un client ait payé 10 € ce soir-là.</p>
+      </div>
+      <div class="q-body">
+        <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+          <span class="text-muted" style="font-size:.85rem">P(payé 10 €) =</span>
+          <input class="ans-input" id="e3q3c" placeholder="0,??" style="width:100px" oninput="clr('3-3c')">
+          <button class="btn-valider ex3-btn" id="bv3-3c" onclick="ck_e3q3c()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h3-3c')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h3-3c">Identifier d'abord quel événement correspond à « payer 10 € » en décomposant ce montant selon les prix du cinéma et des bonbons.</div>
+        <div class="feedback-box" id="fb3-3c"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4a -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">4</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span></div>
+        <p class="q-text mb-0">Dans quel cas un client a-t-il payé 8 € ?</p>
+      </div>
+      <div class="q-body">
+        <div class="mcq-list">
+          <button class="opt-btn" id="e3q4aA" onclick="mcq('3-4a','A','B',['e3q4aA','e3q4aB','e3q4aC'])">
+            <span class="opt-key">A</span>Il a vu le film d'animation sans bonbons (6 € + 0 € = 6 €… non).
+          </button>
+          <button class="opt-btn" id="e3q4aB" onclick="mcq('3-4a','B','B',['e3q4aA','e3q4aB','e3q4aC'])">
+            <span class="opt-key">B</span>Il a vu le film 3D (8 €) sans acheter de bonbons.
+          </button>
+          <button class="opt-btn" id="e3q4aC" onclick="mcq('3-4a','C','B',['e3q4aA','e3q4aB','e3q4aC'])">
+            <span class="opt-key">C</span>Il a vu le film d'animation (6 €) et acheté des bonbons (4 €) = 10 €.
+          </button>
+        </div>
+        <div class="feedback-box" id="fb3-4a"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4c tableau -->
+  <div class="q-wrap mb-2">
+    <div class="q-card">
+      <div class="q-header">
+        <span class="q-num ex3-num">5</span>
+        <div class="q-badges"><span class="comp-badge badge-APP">APP</span><span class="comp-badge badge-REA">REA</span></div>
+        <p class="q-text mb-0"><strong>Compléter</strong> le tableau des probabilités selon le prix payé.</p>
+      </div>
+      <div class="q-body">
+        <div class="table-responsive mb-2">
+          <table class="price-table">
+            <thead><tr><th>Prix payé</th><th>6 €</th><th>8 €</th><th>10 €</th><th>12 €</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="row-head">Probabilité</td>
+                <td><input class="ans-input" id="e3p6" placeholder="?" style="width:70px;font-size:.82rem;padding:.3rem .5rem" oninput="clr('3-4c')"></td>
+                <td class="given-cell">0,25</td>
+                <td><input class="ans-input" id="e3p10" placeholder="?" style="width:70px;font-size:.82rem;padding:.3rem .5rem" oninput="clr('3-4c')"></td>
+                <td><input class="ans-input" id="e3p12" placeholder="?" style="width:70px;font-size:.82rem;padding:.3rem .5rem" oninput="clr('3-4c')"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <button class="btn-valider ex3-btn" id="bv3-4c" onclick="ck_e3q4c()">Valider le tableau</button>
+          <button class="hint-toggle" onclick="tH('h3-4c')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h3-4c">
+          Pour chaque prix, identifier la combinaison film + bonbons correspondante, puis lire l'effectif dans le tableau croisé et diviser par le total (300 spectateurs).
+        </div>
+        <div class="feedback-box" id="fb3-4c"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-wrap mb-4">
+    <div class="q-card" style="border-color:#8b5cf6">
+      <div class="q-header">
+        <span class="q-num ex3-num">6</span>
+        <div class="q-badges"><span class="comp-badge badge-REA">REA</span><span class="comp-badge badge-VAL">VAL</span><span class="comp-badge badge-COM">COM</span></div>
+        <p class="q-text mb-0">
+          <strong>Appliquer la formule des probabilités totales</strong> pour calculer \(P(B)\).<br>
+          <span class="text-muted" style="font-size:.85rem">Rappel : \(P(B) = P(A \cap B) + P(\bar{A} \cap B)\)</span>
+        </p>
+      </div>
+      <div class="q-body">
+        <!-- Étape guidée : écrire la formule développée -->
+        <p class="fw-semibold mb-2" style="font-size:.88rem;color:#374151">Développer la formule :</p>
+        <div class="mb-3" style="font-size:.9rem;background:#f5f3ff;border-radius:8px;padding:.7rem 1rem;border:1px solid #ddd6fe">
+          \(P(B) = P(A)\times P(B|A) \;+\; P(\bar{A})\times P(B|\bar{A})\)
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+          <span class="text-muted" style="font-size:.85rem">\(P(B)\) =</span>
+          <input class="ans-input" id="e3q5" placeholder="0,??" style="width:110px" oninput="clr('3-5')">
+          <button class="btn-valider ex3-btn" id="bv3-5" onclick="ck_e3q5()">Valider</button>
+          <button class="hint-toggle" onclick="tH('h3-5')">💡 Indice</button>
+        </div>
+        <div class="hint-box" id="h3-5">
+          Remplacer chaque terme par les valeurs lues sur l'arbre de probabilités.<br>
+          Les deux chemins qui mènent à \(B\) sont : passer par \(A\) puis \(B\), et passer par \(\bar{A}\) puis \(B\).
+        </div>
+        <div class="appel-bloc mt-2">
+          <div class="appel-icon"><i class="bi bi-person-raised-hand"></i></div>
+          <span><strong>Appel n°2</strong> · Appeler le professeur afin de lui expliquer l'application de la formule et la réponse à la problématique.</span>
+        </div>
+        <div class="feedback-box" id="fb3-5"></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-ex3 -->
+</div><!-- /tab-content -->
+
+<!-- ── SCORE FLOTTANT ── -->
+<div class="score-float">
+  <span id="sf1" style="color:#fb923c">Ex.1 · 0/12</span>
+  <span class="score-sep"></span>
+  <span id="sf2" style="color:#38bdf8">Ex.2 · 0/8</span>
+  <span class="score-sep"></span>
+  <span id="sf3" style="color:#a78bfa">Ex.3 · 0/8</span>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   ÉTAT
+   ══════════════════════════════════════════ */
+const S = {
+  1: { ok:0, tot:12, d:{} },
+  2: { ok:0, tot:8,  d:{} },
+  3: { ok:0, tot:8, d:{} },
+};
+const QX = {
+  '1-1':1,'1-2':1,'1-3':1,'1-4':1,'1-5':1,'1-7':1,
+  '1-8a':1,'1-8b':1,'1-9':1,'1-12a':1,'1-12b':1,'1-12e':1,
+  '2-1':2,'2-2':2,'2-3':2,'2-4':2,'2-5':2,'2-6':2,'2-7':2,'2-8':2,
+  '3-1':3,'3-2a':3,'3-2b':3,'3-3a':3,'3-3c':3,'3-4a':3,'3-4c':3,'3-5':3,
+};
+
+/* ══════════════════════════════════════════
+   UTILITAIRES
+   ══════════════════════════════════════════ */
+function tH(id){ document.getElementById(id)?.classList.toggle('show'); }
+function clr(qk){
+  const ex=QX[qk]; if(S[ex]?.d[qk]) return;
+  // Effacer le feedback principal
+  const fb=document.getElementById('fb'+qk); if(fb){fb.className='feedback-box';fb.innerHTML='';}
+  // Effacer aussi les variantes suffixées (ex: fb1-12e quand on efface 1-12)
+  ['a','b','c','d','e'].forEach(s=>{
+    const fb2=document.getElementById('fb'+qk+s); if(fb2&&!S[ex]?.d[qk+s]){fb2.className='feedback-box';fb2.innerHTML='';}
+  });
+}
+function n(s){ return parseFloat(String(s).trim().replace(',','.')); }
+function near(a,b,t=0.5){ return !isNaN(a)&&Math.abs(a-b)<t; }
+function nearR(a,b,t=0.005){ return !isNaN(a)&&Math.abs(a-b)<t; }
+
+function showFB(qk, ok, msg){
+  const el=document.getElementById('fb'+qk); if(!el) return;
+  el.className='feedback-box show '+(ok?'ok':'ko');
+  const retryBtn = ok ? '' : `<br><button class="btn-retry" onclick="retry('${qk}')">↺ Réessayer</button>`;
+  el.innerHTML=(ok?'<strong>✓ Correct !</strong> ':'<strong>✗ Faux.</strong> ')+msg+retryBtn;
+  if(window.renderMathInElement) renderMathInElement(el,{delimiters:[{left:'\\(',right:'\\)',display:false}],throwOnError:false});
+}
+function disBtn(id){ const b=document.getElementById(id); if(b) b.disabled=true; }
+function enBtn(id){ const b=document.getElementById(id); if(b) b.disabled=false; }
+function markI(id, ok){
+  const el=document.getElementById(id); if(!el) return;
+  el.classList.remove('is-correct','is-wrong'); el.classList.add(ok?'is-correct':'is-wrong'); el.disabled=true;
+}
+function unmarkI(id){
+  const el=document.getElementById(id); if(!el) return;
+  el.classList.remove('is-correct','is-wrong'); el.disabled=false;
+}
+function markS(id, ok){
+  const el=document.getElementById(id); if(!el) return;
+  el.classList.remove('is-correct','is-wrong'); el.classList.add(ok?'is-correct':'is-wrong'); el.disabled=true;
+}
+function unmarkS(id){
+  const el=document.getElementById(id); if(!el) return;
+  el.classList.remove('is-correct','is-wrong'); el.disabled=false;
+}
+function rec(qk, ok){
+  const ex=QX[qk]; if(!ex||S[ex].d[qk]) return false;
+  S[ex].d[qk]=true; if(ok) S[ex].ok++;
+  upScore(ex); return true;
+}
+function unrec(qk){
+  const ex=QX[qk]; if(!ex||!S[ex].d[qk]) return;
+  if(S[ex].d[qk]===true) S[ex].ok = Math.max(0, S[ex].ok-1); // si c'était correct, décrémenter
+  delete S[ex].d[qk];
+  upScore(ex);
+}
+function upScore(ex){
+  const s=S[ex];
+  const t=`Ex.${ex} · ${s.ok}/${s.tot}`;
+  document.getElementById('sf'+ex).textContent=t;
+  document.getElementById('chip'+ex).textContent=t;
+}
+
+/* ── RETRY générique ── */
+function retry(qk){
+  const ex=QX[qk]; if(!ex) return;
+
+  // Effacer les feedbacks liés à cette question
+  ['', 'a','b','c','d','e'].forEach(s=>{
+    const fb=document.getElementById('fb'+qk+s);
+    if(fb){ fb.className='feedback-box'; fb.innerHTML=''; }
+  });
+
+  // Réactiver le bouton valider principal
+  // Chercher le bouton bv lié à cette question (ex: bv1-1, bv1-3, bv1-4...)
+  const bvId = 'bv'+qk;
+  enBtn(bvId);
+  // Cas particuliers avec suffixes
+  ['a','b'].forEach(s=>enBtn('bv'+qk+s));
+
+  // Désinscrire la tentative du score
+  unrec(qk);
+  // Cas question avec sous-questions (1-12a / 1-12b)
+  ['a','b','c','d','e'].forEach(s=>{ if(S[ex]?.d[qk+s]) unrec(qk+s); });
+
+  // Réinitialiser selon le type de question
+  switch(qk){
+
+    // ── MCQ : réactiver tous les boutons option ──
+    case '1-2': ['e1q2A','e1q2B','e1q2C'].forEach(resetOpt); break;
+    case '1-7': ['e1q7A','e1q7B','e1q7C'].forEach(resetOpt); break;
+    case '1-8a': ['e1q8aA','e1q8aB','e1q8aC'].forEach(resetOpt); break;
+    case '1-8b': ['e1q8bA','e1q8bB','e1q8bC'].forEach(resetOpt); break;
+    case '1-12e': ['e1q12eA','e1q12eB','e1q12eC'].forEach(resetOpt); break;
+    case '2-2': ['e2q2A','e2q2B','e2q2C','e2q2D'].forEach(resetOpt); break;
+    case '2-4': ['e2q4A','e2q4B','e2q4C'].forEach(resetOpt); break;
+    case '2-5': ['e2q5A','e2q5B','e2q5C','e2q5D'].forEach(resetOpt); break;
+    case '2-8': ['e2q8A','e2q8B','e2q8C'].forEach(resetOpt); break;
+    case '3-1': ['e3q1A','e3q1B','e3q1C'].forEach(resetOpt); break;
+    case '3-2a': ['e3q2aA','e3q2aB','e3q2aC'].forEach(resetOpt); break;
+    case '3-3a': ['e3q3aA','e3q3aB','e3q3aC'].forEach(resetOpt); break;
+    case '3-4a': ['e3q4aA','e3q4aB','e3q4aC'].forEach(resetOpt); break;
+    case '3-4b': resetInput('e3q4b'); break;
+
+    // ── Input simples ──
+    case '1-1': resetInput('e1q1'); break;
+    case '2-3': {
+      ['e2q3a','e2q3b','e2q3c','e2q3d'].forEach(resetInput);
+      break;
+    }
+    case '2-6': { resetInput('e2q6a'); resetInput('e2q6b'); break; }
+    case '2-7': { resetInput('e2q7a'); break; }
+    case '2-1': {
+      resetInput('e2q1a'); resetInput('e2q1b');
+      break;
+    }
+    case '3-3b': resetInput('e3q3b'); break;
+    case '3-3c': resetInput('e3q3c'); break;
+    case '3-5': resetInput('e3q5'); break;
+
+    // ── Q3 : MathQuill ──
+    case '1-3': {
+      if(window._mqQ3){ window._mqQ3.latex(''); }
+      const mqEl3=document.getElementById('mq-q3');
+      if(mqEl3){ mqEl3.classList.remove('is-correct','is-wrong'); }
+      break;
+    }
+
+    // ── Q4 : racines tableau + sélecteurs signe ──
+    case '1-4': {
+      unmarkI('th4-t1-in'); document.getElementById('th4-t1-in').value='';
+      unmarkI('th4-t2-in'); document.getElementById('th4-t2-in').value='';
+      ['s1a','s1b','s1c','s1d','s1e'].forEach(id=>{ unmarkS(id); document.getElementById(id).value=''; });
+      break;
+    }
+
+    // ── Q5 : tableau de variations ──
+    case '1-5': {
+      ['s1f','s1g','s1h'].forEach(id=>{ unmarkS(id); document.getElementById(id).value=''; });
+      ['v5-max','v5-min','v5-h8in'].forEach(id=>{ unmarkI(id); document.getElementById(id).value=''; });
+      break;
+    }
+
+    // ── Q9 : solutions intersections ──
+    case '1-9': {
+      ['e1q9a','e1q9b','e1q9c','e1q9d','e1q9e','e1q9f'].forEach(id=>{ unmarkI(id); document.getElementById(id).value=''; });
+      break;
+    }
+
+    // ── Q12 : vitesses ──
+    case '1-12':
+    case '1-12a':
+    case '1-12b': {
+      ['e1q12a','e1q12b','e1q12c','e1q12d'].forEach(id=>{ unmarkI(id); document.getElementById(id).value=''; });
+      unrec('1-12a'); unrec('1-12b');
+      enBtn('bv1-12');
+      const fb12=document.getElementById('fb1-12'); if(fb12){fb12.className='feedback-box';fb12.innerHTML='';}
+      const fb12e=document.getElementById('fb1-12e'); if(fb12e){fb12e.className='feedback-box';fb12e.innerHTML='';}
+      ['e1q12eA','e1q12eB','e1q12eC'].forEach(resetOpt);
+      unrec('1-12e');
+      break;
+    }
+
+    // ── Q2a tableau croisé ──
+    case '3-2a': {
+      ['e3tab1','e3tab2','e3tab3','e3tab4','e3tab5','e3tab6','e3tab7'].forEach(id=>{ unmarkI(id); const el=document.getElementById(id); if(el) el.value=''; });
+      break;
+    }
+    // ── Q2b arbre complet ──
+    case '3-2b': {
+      ['e3b-pA','e3b-pAbar','e3b-pAB','e3b-pABbar','e3b-pAbarB','e3b-pAbarBbar',
+       'e3tree1','e3tree2','e3tree3','e3tree4'].forEach(id=>{ unmarkI(id); const el=document.getElementById(id); if(el) el.value=''; });
+      break;
+    }
+
+    // ── Q4c tableau prix ──
+    case '3-4c': {
+      ['e3p6','e3p10','e3p12'].forEach(id=>{ unmarkI(id); document.getElementById(id).value=''; });
+      break;
+    }
+  }
+}
+
+function resetOpt(id){
+  const el=document.getElementById(id); if(!el) return;
+  el.disabled=false;
+  el.classList.remove('correct','wrong','show-correct');
+  const k=el.querySelector('.opt-key'); if(k){ k.style.background=''; k.style.color=''; }
+}
+function resetInput(id){
+  const el=document.getElementById(id); if(!el) return;
+  unmarkI(id); el.value='';
+}
+
+/* ══════════════════════════════════════════
+   MCQ GÉNÉRIQUE
+   ══════════════════════════════════════════ */
+const MCQ_FB = {
+  '1-2':{ ok:'Correct ! \(h(0)=145\) m donc la montgolfière part à une altitude de 145 m.', ko:'Faux. \(h(0)\) donne l\'altitude à l\'instant \(t=0\), soit l\'altitude de départ.' },
+  '1-6':{ ok:'Correct ! \(h\) est croissante sur \([0;2]\) — maximum local 465 m en \(t=2\), décroissante sur \([2;6]\) — minimum local 145 m en \(t=6\), puis croissante sur \([6;8]\) jusqu\'à \(h(8)=465\) m.', ko:'Faux. Relire le tableau de variations en 3 phases : ↗ puis ↘ puis ↗.' },
+  '1-7':{ ok:'Correct ! 2 phases croissantes (↗) et 1 phase décroissante (↘).', ko:'Faux. Compter les flèches du tableau : 2 montées et 1 descente.' },
+  '1-8a':{ ok:'Correct ! 200 est compris entre le minimum (145 m) et le maximum (465 m), et la courbe change 2 fois de sens → la droite \\(y=200\\) coupe la courbe en <strong>3 points</strong>.', ko:'Faux. La droite \\(y=200\\) est entre le min (145 m) et le max (465 m). La courbe monte, descend puis remonte en passant par 200 à chaque fois → 3 intersections.' },
+  '1-8b':{ ok:'Correct ! 400 est compris entre le minimum (145 m) et le maximum (465 m), et la courbe change 2 fois de sens → la droite \\(y=400\\) coupe la courbe en <strong>3 points</strong>.', ko:'Faux. La droite \\(y=400\\) est entre le min (145 m) et le max (465 m). La courbe monte, descend puis remonte en passant par 400 à chaque fois → 3 intersections.' },
+  '1-12e':{ ok:'Correct ! Vitesse ascension : \(\\frac{465-145}{2-0}=160\) m/min > 10 m/min ✓. Vitesse descente : \(\\frac{465-145}{6-2}=80\) m/min > 8 m/min ✓. Les deux objectifs sont atteints.', ko:'Faux. Calculer chaque vitesse moyenne avec la formule \(\\frac{|h(t_2)-h(t_1)|}{t_2-t_1}\) et comparer aux seuils.' },
+  '2-2':{ ok:'Correct ! La relation de récurrence est \\(u_{n+1}=u_n\\times q\\). Avec \\(q=0{,}92\\) : \\(u_{n+1}=u_n\\times0{,}92\\).', ko:'Faux. La relation de récurrence d\'une suite géométrique de raison \\(q\\) est \\(u_{n+1}=u_n\\times q\\). Ici \\(q=0{,}92\\).' },
+  '2-4':{ ok:'Correct ! Les points du nuage s\'alignent sur une courbe décroissante : la capacité diminue à chaque cycle (\\(q=0{,}92<1\\) et \\(u_0>0\\)).', ko:'Faux. Puisque \\(0<q=0{,}92<1\\) et \\(u_0=100>0\\), la suite est strictement décroissante.' },
+  '2-5':{ ok:'Correct ! La formule explicite est \\(u_n=u_0\\times q^n=100\\times0{,}92^n\\). Vérifier : \\(u_0=100\\times1=100\\) ✓', ko:'Faux. Pour une suite géométrique de premier terme \\(u_0\\) et raison \\(q\\), on a \\(u_n=u_0\\times q^n=100\\times0{,}92^n\\).' },
+  '2-8':{ ok:'Correct ! \\(S\\approx755\\) Ah \\(>700\\) Ah : le cahier des charges est respecté. La batterie fournit suffisamment de capacité cumulée avant d\'être remplacée au cycle 12.', ko:'Faux. Comparer la valeur de \\(S\\) calculée à la question 7 au seuil de 700 Ah du cahier des charges.' },
+  '3-1':{ ok:'Correct ! \(\\bar{A}\) est le complémentaire de A : le client a vu le film 3D.', ko:'Faux. \(\\bar{A}\) est l\'événement contraire de A (film d\'animation), donc c\'est le film 3D.' },
+  '3-2a':{ ok:'Correct ! \(P(A)=2/3\), \(P_A(B)=0{,}6\), \(P_{\\bar{A}}(B)=1/4=0{,}25\).', ko:'Faux. Relire l\'énoncé : 2/3 ont vu le film d\'animation, 60 % ont pris des bonbons, 1/4 pour le 3D.' },
+  '3-3a':{ ok:'Correct ! \(A\cap B\) = film d\'animation ET bonbons.', ko:'Faux. L\'intersection \(\\cap\) signifie « et » : A ET B.' },
+  '3-4a':{ ok:'Correct ! 8 € = prix du film 3D uniquement, sans bonbons.', ko:'Faux. Film 3D = 8 €, sans bonbons = total 8 €.' },
+  '3-4b':{ ok:'Correct ! \(P(\\bar{A}\\cap\\bar{B})=\\frac{1}{3}\\times0{,}75=0{,}25\) ✓', ko:'Faux. \(P(\\bar{A}\\cap\\bar{B})=\\frac{1}{3}\\times0{,}75=0{,}25\). C\'est bien vérifié.' },
+};
+
+function mcq(qk, chosen, correct, ids){
+  const ex=QX[qk]; if(S[ex]?.d[qk]) return;
+  const ok=chosen===correct;
+  rec(qk,ok);
+  ids.forEach(id=>{
+    const el=document.getElementById(id); if(!el) return;
+    el.disabled=true;
+    // Extraire la lettre = dernier caractère majuscule de l'id
+    const k=id.match(/([A-Z])$/)?.[1];
+    if(k===correct){
+      el.classList.add('correct');
+      el.querySelector('.opt-key').style.background='#16a34a';
+      el.querySelector('.opt-key').style.color='white';
+    } else if(k===chosen && !ok){
+      el.classList.add('wrong');
+      el.querySelector('.opt-key').style.background='#dc2626';
+      el.querySelector('.opt-key').style.color='white';
+    }
+  });
+  const fb=MCQ_FB[qk];
+  showFB(qk, ok, ok?(fb?.ok||'Bonne réponse !'):(fb?.ko||'Mauvaise réponse.'));
+}
+
+/* ══════════════════════════════════════════
+   CHECKS SPÉCIFIQUES
+   ══════════════════════════════════════════ */
+// ── EX1 Q1 ──
+function ck_e1q1(){
+  if(S[1].d['1-1']) return;
+  const v=n(document.getElementById('e1q1').value);
+  const ok=near(v,145,1);
+  rec('1-1',ok);
+  markI('e1q1',ok); disBtn('bv1-1');
+  showFB('1-1',ok,
+    '\\(h(0)=10(0)^3-120(0)^2+360(0)+145=145\\) m.',
+    'Chaque terme contenant \\(t\\) s\'annule quand \\(t=0\\). Il ne reste que la constante : \\(h(0)=145\\) m.'
+  );
+}
+
+// ── EX1 Q3 : saisie MathQuill de h'(t) ──
+function ck_e1q3(){
+  if(S[1].d['1-3']) return;
+  const raw = (window._mqQ3 ? window._mqQ3.latex() : '').replace(/\s/g,'').toLowerCase();
+  const ok30  = /30t\^?\{?2\}?/.test(raw) || /30t2/.test(raw);
+  const ok240 = /-240t/.test(raw);
+  const ok360 = raw.includes('360');
+  const ok = ok30 && ok240 && ok360;
+  const mqEl = document.getElementById('mq-q3');
+  if(mqEl){ mqEl.classList.remove('is-correct','is-wrong'); mqEl.classList.add(ok?'is-correct':'is-wrong'); }
+  rec('1-3',ok); disBtn('bv1-3');
+  showFB('1-3',ok,
+    '\\(h\'(t)=30t^2-240t+360\\). Détail : \\((10t^3)\'=30t^2\\), \\((-120t^2)\'=-240t\\), \\((360t)\'=360\\), \\((145)\'=0\\).',
+    'Vérifier chaque terme : \\((10t^3)\'=30t^2\\), \\((-120t^2)\'=-240t\\), \\((360t)\'=360\\), \\((145)\'=0\\).'
+  );
+}
+
+// ── EX1 Q4 : racines dans tableau + signe ──
+function ck_e1q4(){
+  if(S[1].d['1-4']) return;
+  const r1 = n(document.getElementById('th4-t1-in').value);
+  const r2 = n(document.getElementById('th4-t2-in').value);
+  const okR = (near(r1,2,0.1)&&near(r2,6,0.1)) || (near(r1,6,0.1)&&near(r2,2,0.1));
+  markI('th4-t1-in', near(r1,2,0.1)||near(r1,6,0.1));
+  markI('th4-t2-in', near(r2,6,0.1)||near(r2,2,0.1));
+  const exp={s1a:'+',s1b:'0',s1c:'−',s1d:'0',s1e:'+'};
+  let sc=0;
+  Object.entries(exp).forEach(([id,v])=>{
+    const el=document.getElementById(id); if(!el) return;
+    const okS=el.value===v; markS(id,okS); if(okS) sc++;
+  });
+  const okSign=sc>=4;
+  const ok=okR && okSign;
+  rec('1-4',ok); disBtn('bv1-4');
+  showFB('1-4',ok,
+    '\\(h\'(t)=30t^2-240t+360=30(t-2)(t-6)\\). Racines : \\(t_1=2\\) et \\(t_2=6\\). Coefficient dominant positif → \\(h\'(t)>0\\) hors de \\([2;6]\\), \\(h\'(t)<0\\) entre 2 et 6.',
+    okR
+      ? 'Racines correctes. Vérifier les signes : coefficient de \\(t^2\\) positif → \\(h\'\\) positive hors des racines, négative entre elles.'
+      : 'Lire les zéros de \\(h\'\\) dans NumWorks : onglet <strong>Graphique → Calcul → Rechercher → Zéro</strong>. Les racines sont \\(t_1=2\\) et \\(t_2=6\\).'
+  );
+}
+
+// ── EX1 Q5 : tableau de variations 3 lignes ──
+function ck_e1q5(){
+  if(S[1].d['1-5']) return;
+  const expArr={s1f:'↗',s1g:'↘',s1h:'↗'};
+  let scArr=0;
+  Object.entries(expArr).forEach(([id,v])=>{
+    const el=document.getElementById(id); if(!el) return;
+    const okA=el.value===v; markS(id,okA); if(okA) scArr++;
+  });
+  // h(2)=465, h(6)=145, h(8)=465
+  const vMax = n(document.getElementById('v5-max').value);
+  const vMin = n(document.getElementById('v5-min').value);
+  const vh8  = n(document.getElementById('v5-h8in').value);
+  const okMax = near(vMax,465,2);
+  const okMin = near(vMin,145,2);
+  const okH8  = near(vh8, 465,2);
+  markI('v5-max',okMax); markI('v5-min',okMin); markI('v5-h8in',okH8);
+  const ok = scArr===3 && okMax && okMin && okH8;
+  rec('1-5',ok); disBtn('bv1-5');
+  showFB('1-5',ok,
+    '\\(h\\) est croissante sur \\([0;2]\\) — <strong>maximum local \\(h(2)=465\\) m</strong>, décroissante sur \\([2;6]\\) — <strong>minimum local \\(h(6)=145\\) m</strong>, puis croissante sur \\([6;8]\\) jusqu\'à \\(h(8)=465\\) m.',
+    'Erreur(s). Rappel : ↗ si \\(h\'(t)>0\\), ↘ si \\(h\'(t)<0\\). Valeurs : \\(h(2)=465\\) m (max local), \\(h(6)=145\\) m (min local), \\(h(8)=465\\) m.'
+  );
+}
+
+// ── EX1 Q9 : solutions h(t)=200 et h(t)=400 ──
+function ck_e1q9(){
+  if(S[1].d['1-9']) return;
+  // h(t)=200 → 3 solutions : t≈0.16, t≈4.95, t≈6.89
+  // h(t)=400 → 3 solutions : t≈1.03, t≈3.16, t≈7.81
+  const tol=0.15;
+  const ref200=[0.16, 4.95, 6.89];
+  const ref400=[1.03, 3.16, 7.81];
+  const vals200=[
+    n(document.getElementById('e1q9a').value),
+    n(document.getElementById('e1q9b').value),
+    n(document.getElementById('e1q9c').value)
+  ];
+  const vals400=[
+    n(document.getElementById('e1q9d').value),
+    n(document.getElementById('e1q9e').value),
+    n(document.getElementById('e1q9f').value)
+  ];
+  const ok200=ref200.every(r=>vals200.some(v=>near(v,r,tol)));
+  const ok400=ref400.every(r=>vals400.some(v=>near(v,r,tol)));
+  // Colorier chaque champ individuellement
+  [['e1q9a',0.16],['e1q9b',4.95],['e1q9c',6.89]].forEach(([id,r])=>
+    markI(id, near(n(document.getElementById(id).value), r, tol))
+  );
+  [['e1q9d',1.03],['e1q9e',3.16],['e1q9f',7.81]].forEach(([id,r])=>
+    markI(id, near(n(document.getElementById(id).value), r, tol))
+  );
+  const ok=ok200&&ok400;
+  rec('1-9',ok); disBtn('bv1-9');
+  showFB('1-9',ok,
+    'Solutions de \\(h(t)=200\\) : \\(t\\approx0{,}16\\), \\(t\\approx4{,}95\\), \\(t\\approx6{,}89\\) min. Solutions de \\(h(t)=400\\) : \\(t\\approx1{,}03\\), \\(t\\approx3{,}16\\), \\(t\\approx7{,}81\\) min.',
+    'Valeurs incorrectes. Dans NumWorks : saisir \\(f_1(t)=10t^3-120t^2+360t+145\\), \\(f_2(t)=200\\) et \\(f_3(t)=400\\) dans <strong>Graphique</strong>, puis <strong>Calcul → Rechercher → Intersection</strong> pour chaque paire.'
+  );
+}
+
+// ── EX1 Q12 : conclusion vitesses ──
+function ck_e1q12(){
+  if(S[1].d['1-12a'] && S[1].d['1-12b']) return;
+  const dAlt1=n(document.getElementById('e1q12a').value); // h(2)-h(0)=465-145=320
+  const vAsc =n(document.getElementById('e1q12b').value); // 320/2=160
+  const dAlt2=n(document.getElementById('e1q12c').value); // |h(6)-h(2)|=|145-465|=320
+  const vDesc=n(document.getElementById('e1q12d').value); // 320/4=80
+  const okA=near(dAlt1,320,2), okB=near(vAsc,160,2);
+  const okC=near(dAlt2,320,2), okD=near(vDesc,80,2);
+  markI('e1q12a',okA); markI('e1q12b',okB);
+  markI('e1q12c',okC); markI('e1q12d',okD);
+  const ok=okA&&okB&&okC&&okD;
+  if(!S[1].d['1-12a']) rec('1-12a', okA&&okB);
+  if(!S[1].d['1-12b']) rec('1-12b', okC&&okD);
+  disBtn('bv1-12');
+  showFB('1-12',ok,
+    'Ascension sur \\([0;2]\\) : \\(\\frac{h(2)-h(0)}{2}=\\frac{465-145}{2}=160\\) m/min → <strong>160 &gt; 10 ✓</strong>. Descente sur \\([2;6]\\) : \\(\\frac{|h(6)-h(2)|}{4}=\\frac{320}{4}=80\\) m/min → <strong>80 &gt; 8 ✓</strong>. Les deux objectifs sont atteints.',
+    'Erreur(s). Ascension : \\(\\frac{h(2)-h(0)}{2-0}=\\frac{465-145}{2}=160\\) m/min. Descente : \\(\\frac{|h(6)-h(2)|}{6-2}=\\frac{|145-465|}{4}=80\\) m/min.'
+  );
+}
+
+// ══ EX2 — BATTERIE ══
+
+// Q1 : u0 et q
+function ck_e2q1(){
+  if(S[2].d['2-1']) return;
+  const u0 = n(document.getElementById('e2q1a').value);
+  const q  = n(document.getElementById('e2q1b').value);
+  const okU = near(u0, 100, 0.5);
+  const okQ = near(q, 0.92, 0.005);
+  markI('e2q1a', okU); markI('e2q1b', okQ);
+  const ok = okU && okQ;
+  rec('2-1', ok); disBtn('bv2-1');
+  showFB('2-1', ok,
+    '\\(u_0=100\\) Ah (capacité initiale) et \\(q=1-0{,}08=0{,}92\\). La suite est géométrique car on multiplie chaque terme par le même facteur 0,92.',
+    !okU ? '\\(u_0\\) est la capacité avant tout cycle : 100 Ah.'
+         : 'Perdre 8 % signifie conserver \\(100\\%-8\\%=92\\%\\) soit multiplier par \\(q=0{,}92\\).'
+  );
+}
+
+// Q3 : u2, u3, u4, u5 par récurrence
+function ck_e2q3(){
+  if(S[2].d['2-3']) return;
+  // u1=92, u2=84.64, u3=77.87, u4=71.64, u5=65.91
+  const exp = {
+    a: 100*Math.pow(0.92,2),  // u2 ≈ 84.64
+    b: 100*Math.pow(0.92,3),  // u3 ≈ 77.87
+    c: 100*Math.pow(0.92,4),  // u4 ≈ 71.64
+    d: 100*Math.pow(0.92,5),  // u5 ≈ 65.91
+  };
+  const vals = {
+    a: n(document.getElementById('e2q3a').value),
+    b: n(document.getElementById('e2q3b').value),
+    c: n(document.getElementById('e2q3c').value),
+    d: n(document.getElementById('e2q3d').value),
+  };
+  const oks = {
+    a: near(vals.a, exp.a, 0.05),
+    b: near(vals.b, exp.b, 0.05),
+    c: near(vals.c, exp.c, 0.05),
+    d: near(vals.d, exp.d, 0.05),
+  };
+  Object.keys(oks).forEach(k => markI('e2q3'+k, oks[k]));
+  const ok = Object.values(oks).every(Boolean);
+  rec('2-3', ok); disBtn('bv2-3');
+  showFB('2-3', ok,
+    `\\(u_2\\approx${exp.a.toFixed(2)}\\) Ah · \\(u_3\\approx${exp.b.toFixed(2)}\\) Ah · \\(u_4\\approx${exp.c.toFixed(2)}\\) Ah · \\(u_5\\approx${exp.d.toFixed(2)}\\) Ah.`,
+    `Rappel : \\(u_2=u_1\\times0{,}92=92\\times0{,}92\\approx${exp.a.toFixed(2)}\\) Ah, puis continuer de proche en proche.`
+  );
+}
+
+// Q6 : u10 et u12
+function ck_e2q6(){
+  if(S[2].d['2-6']) return;
+  const exp10 = 100*Math.pow(0.92,10); // ≈ 43.44
+  const exp12 = 100*Math.pow(0.92,12); // ≈ 36.77
+  const v10 = n(document.getElementById('e2q6a').value);
+  const v12 = n(document.getElementById('e2q6b').value);
+  const ok10 = near(v10, exp10, 0.05);
+  const ok12 = near(v12, exp12, 0.05);
+  markI('e2q6a', ok10); markI('e2q6b', ok12);
+  const ok = ok10 && ok12;
+  rec('2-6', ok); disBtn('bv2-6');
+  showFB('2-6', ok,
+    `\\(u_{10}=100\\times0{,}92^{10}\\approx${exp10.toFixed(2)}\\) Ah et \\(u_{12}=100\\times0{,}92^{12}\\approx${exp12.toFixed(2)}\\) Ah.`,
+    `\\(u_{10}=100\\times0{,}92^{10}\\approx${exp10.toFixed(2)}\\) Ah. \\(u_{12}=100\\times0{,}92^{12}\\approx${exp12.toFixed(2)}\\) Ah.`
+  );
+}
+
+// Q7 : somme S = u0+...+u11 (12 termes)
+function ck_e2q7(){
+  if(S[2].d['2-7']) return;
+  // S = 100 × (1 - 0.92^12) / (1 - 0.92)
+  const expected = 100 * (1 - Math.pow(0.92,12)) / (1 - 0.92);
+  const v = n(document.getElementById('e2q7a').value);
+  const ok = near(v, expected, 1);
+  markI('e2q7a', ok); rec('2-7', ok); disBtn('bv2-7');
+  showFB('2-7', ok,
+    `\\(S=100\\times\\dfrac{1-0{,}92^{12}}{1-0{,}92}=100\\times\\dfrac{1-0{,}92^{12}}{0{,}08}\\approx${expected.toFixed(2)}\\) Ah.`,
+    `Vérifier le calcul : numérateur = \\(1-0{,}92^{12}\\approx${(1-Math.pow(0.92,12)).toFixed(4)}\\), dénominateur = \\(0{,}08\\). Résultat \\(\\approx${expected.toFixed(2)}\\) Ah.`
+  );
+}
+
+// Ex3 Q2a — tableau croisé d'effectifs
+// A:    120 bonbons | 80 pas bonbons  | total 200
+// Ā:     25 bonbons | 75 pas bonbons  | total 100
+// Total:145 bonbons |155 pas bonbons  | total 300
+function ck_e3q2a(){
+  if(S[3].d['3-2a']) return;
+  const vals = {
+    tab1: n(document.getElementById('e3tab1').value), // A sans bonbons = 80
+    tab2: n(document.getElementById('e3tab2').value), // Ā sans bonbons = 75
+    tab3: n(document.getElementById('e3tab3').value), // total bonbons = 145
+    tab4: n(document.getElementById('e3tab4').value), // total sans bonbons = 155
+    tab5: n(document.getElementById('e3tab5').value), // total A = 200
+    tab6: n(document.getElementById('e3tab6').value), // total Ā = 100
+    tab7: n(document.getElementById('e3tab7').value), // total général = 300
+  };
+  const exp = { tab1:80, tab2:75, tab3:145, tab4:155, tab5:200, tab6:100, tab7:300 };
+  const oks = {};
+  Object.keys(exp).forEach(k => {
+    oks[k] = near(vals[k], exp[k], 0.5);
+    markI('e3'+k, oks[k]);
+  });
+  const ok = Object.values(oks).every(Boolean);
+  rec('3-2a', ok); disBtn('bv3-2a');
+  showFB('3-2a', ok,
+    'Tableau complet : \(A\) → 120 | 80 | 200 · \(\bar{A}\) → 25 | 75 | 100 · Total → 145 | 155 | 300.',
+    'Vérifier que chaque ligne et chaque colonne somment au bon total. Ex : ligne \(A\) : 120 + ? = 200, donc ? = 80.'
+  );
+}
+
+// Ex3 Q2b — arbre complet (8 branches + 4 intersections)
+function ck_e3q2b(){
+  if(S[3].d['3-2b']) return;
+
+  // Parser qui accepte : décimale (0,67 ou 0.67), fraction (2/3), pourcentage (67%)
+  function parseVal(s){
+    if(!s) return NaN;
+    s = s.trim().replace(',','.');
+    // Fraction ex: 2/3, 25/300, 1/3
+    if(/^\d+\/\d+$/.test(s)){
+      const parts = s.split('/');
+      return parseFloat(parts[0]) / parseFloat(parts[1]);
+    }
+    // Pourcentage ex: 66.7%
+    if(s.endsWith('%')) return parseFloat(s) / 100;
+    return parseFloat(s);
+  }
+
+  // Tolérance généreuse : accepte 2 décimales arrondies
+  const tol = 0.02;
+
+  const checks = [
+    ['e3b-pA',        2/3   ],  // ≈ 0.667 → accepte 0.67, 0.667, 2/3
+    ['e3b-pAbar',     1/3   ],  // ≈ 0.333 → accepte 0.33, 0.333, 1/3
+    ['e3b-pAB',       0.6   ],  // exact
+    ['e3b-pABbar',    0.4   ],  // exact
+    ['e3b-pAbarB',    0.25  ],  // exact
+    ['e3b-pAbarBbar', 0.75  ],  // exact
+    ['e3tree1',       120/300], // = 0.4 exact
+    ['e3tree2',       80/300 ], // ≈ 0.267 → accepte 0.27, 0.267, 80/300
+    ['e3tree3',       25/300 ], // ≈ 0.083 → accepte 0.08, 0.083, 25/300
+    ['e3tree4',       75/300 ], // = 0.25 exact
+  ];
+
+  let allOk = true;
+  checks.forEach(([id, expected]) => {
+    const el = document.getElementById(id); if(!el) return;
+    const v = parseVal(el.value);
+    const ok = !isNaN(v) && Math.abs(v - expected) < tol;
+    markI(id, ok);
+    if(!ok) allOk = false;
+  });
+
+  rec('3-2b', allOk); disBtn('bv3-2b');
+  showFB('3-2b', allOk,
+    '\\(P(A)=\\frac{2}{3}\\) · \\(P(\\bar{A})=\\frac{1}{3}\\) · \\(P(B|A)=0{,}6\\) · \\(P(\\bar{B}|A)=0{,}4\\) · \\(P(B|\\bar{A})=0{,}25\\) · \\(P(\\bar{B}|\\bar{A})=0{,}75\\). Somme des intersections \\(=1\\) ✓',
+    'Des valeurs sont incorrectes. Vous pouvez saisir une fraction (ex : 2/3), un décimal (ex : 0,67) ou un arrondi à 2 décimales. Vérifier en divisant les effectifs du tableau par le bon total.'
+  );
+}
+
+// Ex3 Q3b
+function ck_e3q3b(){
+  const ok=near(n(document.getElementById('e3q3b').value), 2/3*0.6, 0.01);
+  if(!rec('3-3b',ok)) return; markI('e3q3b',ok); disBtn('bv3-3b');
+  showFB('3-3b',ok,'\\(P(A\\cap B)=P(A)\\times P(B|A)=\\frac{2}{3}\\times0{,}6\\approx0{,}4\\).','\\(P(A\\cap B)=P(A)\\times P(B|A)\\). Lire \\(P(A)\\) et \\(P(B|A)\\) sur l\'arbre puis multiplier.');
+}
+
+// Ex3 Q3c
+function ck_e3q3c(){
+  const ok=near(n(document.getElementById('e3q3c').value), 2/3*0.6, 0.01);
+  if(!rec('3-3c',ok)) return; markI('e3q3c',ok); disBtn('bv3-3c');
+  showFB('3-3c',ok,'Payer 10 € = animation (6 €) + bonbons (4 €) = événement \\(A\\cap B\\), donc \\(P\\approx0{,}4\\).','Décomposer 10 € : film animation (6 €) + bonbons (4 €). L\'événement correspondant est \\(A\\cap B\\).');
+}
+
+// Ex3 Q4b — P(8€) = P(Ā∩B̄) = 1/3 × 0.75 = 0.25
+function ck_e3q4b(){
+  if(S[3].d['3-4b']) return;
+  const ok = nearR(n(document.getElementById('e3q4b').value), 1/3*0.75, 0.005);
+  markI('e3q4b', ok); rec('3-4b', ok); disBtn('bv3-4b');
+  showFB('3-4b', ok,
+    '8 € = film 3D (8 €) sans bonbons = événement \\(\\bar{A}\\cap\\bar{B}\\). \\(P(\\bar{A}\\cap\\bar{B})=P(\\bar{A})\\times P(\\bar{B}|\\bar{A})=\\frac{1}{3}\\times0{,}75=0{,}25\\).',
+    'Décomposer : 8 € = prix du film 3D uniquement, sans bonbons. Identifier l\'événement correspondant sur l\'arbre et multiplier les probabilités du chemin.'
+  );
+}
+
+// Ex3 Q4c tableau
+function ck_e3q4c(){
+  if(S[3].d['3-4c']) return;
+  const p6=n(document.getElementById('e3p6').value);
+  const p10=n(document.getElementById('e3p10').value);
+  const p12=n(document.getElementById('e3p12').value);
+  const e6=2/3*0.4, e10=2/3*0.6, e12=1/3*0.25;
+  const ok6=nearR(p6,e6), ok10=nearR(p10,e10), ok12=nearR(p12,e12);
+  markI('e3p6',ok6); markI('e3p10',ok10); markI('e3p12',ok12);
+  const ok=ok6&&ok10&&ok12; rec('3-4c',ok); disBtn('bv3-4c');
+  showFB('3-4c',ok,`6 €: \\(\\frac{2}{3}\\times0{,}4\\approx0{,}267\\) · 10 €: \\(0{,}4\\) · 12 €: \\(\\frac{1}{3}\\times0{,}25\\approx0{,}083\\). Somme des 4 cases = 1 ✓`,`6 €: \\(P(A\\cap\\bar{B})=\\frac{2}{3}\\times0{,}4\\approx0{,}267\\) · 10 €: \\(0{,}4\\) · 12 €: \\(\\frac{1}{3}\\times0{,}25\\approx0{,}083\\).`);
+}
+
+// Ex3 Q5
+function ck_e3q5(){
+  const pB=2/3*0.6+1/3*0.25;
+  const ok=nearR(n(document.getElementById('e3q5').value),pB,0.005);
+  if(!rec('3-5',ok)) return; markI('e3q5',ok); disBtn('bv3-5');
+  showFB('3-5',ok,`\\(P(B)=P(A\\cap B)+P(\\bar{A}\\cap B)=\\frac{2}{3}\\times0{,}6+\\frac{1}{3}\\times0{,}25=0{,}4+0{,}083\\approx${pB.toFixed(3)}\\).`,`Formule des probabilités totales : \\(P(B)=\\frac{2}{3}\\times0{,}6+\\frac{1}{3}\\times0{,}25\\approx${pB.toFixed(3)}\\).`);
+}
+
+/* ══════════════════════════════════════════
+   MATHQUILL — initialisation après chargement
+   ══════════════════════════════════════════ */
+function initMathQuill(){
+  if(typeof MathQuill === 'undefined') {
+    setTimeout(initMathQuill, 200);
+    return;
+  }
+  const MQ = MathQuill.getInterface(2);
+
+  // Q3 — expression de h'(t)
+  const mqEl = document.getElementById('mq-q3');
+  if(mqEl){
+    window._mqQ3 = MQ.MathField(mqEl, {
+      spaceBehavesLikeTab: false,
+      handlers: {
+        edit: function(){ clr('1-3'); }
+      }
+    });
+  }
+}
+// Attendre que jQuery + MathQuill soient disponibles
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initMathQuill);
+} else {
+  initMathQuill();
+}
+</script>
+</body>
+</html>
